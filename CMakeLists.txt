@@ -20,5 +20,5 @@ cmake_minimum_required(VERSION 3.1)
 
 include_directories(../../../external/protobuf/repo/src/google/protbuf)
 
-add_library(sheetfaced_proto SHARED sheetfaced.pb.cc)
-target_link_libraries(sheetfaced_proto protobuf::libprotobuf)
+add_library(test_proto SHARED test.pb.cc)
+target_link_libraries(test_proto protobuf::libprotobuf)
