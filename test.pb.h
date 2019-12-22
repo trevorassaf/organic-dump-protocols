@@ -31,6 +31,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -54,35 +55,57 @@ struct TableStruct_test_2eproto {
   static const ::PROTOBUF_NAMESPACE_ID::uint32 offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_test_2eproto;
-namespace message {
-class Message;
-class MessageDefaultTypeInternal;
-extern MessageDefaultTypeInternal _Message_default_instance_;
-}  // namespace message
+namespace test_message {
+class BasicStringMsg;
+class BasicStringMsgDefaultTypeInternal;
+extern BasicStringMsgDefaultTypeInternal _BasicStringMsg_default_instance_;
+}  // namespace test_message
 PROTOBUF_NAMESPACE_OPEN
-template<> ::message::Message* Arena::CreateMaybeMessage<::message::Message>(Arena*);
+template<> ::test_message::BasicStringMsg* Arena::CreateMaybeMessage<::test_message::BasicStringMsg>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
-namespace message {
+namespace test_message {
 
+enum MessageType : int {
+  BASIC_STRING = 0
+};
+bool MessageType_IsValid(int value);
+constexpr MessageType MessageType_MIN = BASIC_STRING;
+constexpr MessageType MessageType_MAX = BASIC_STRING;
+constexpr int MessageType_ARRAYSIZE = MessageType_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MessageType_descriptor();
+template<typename T>
+inline const std::string& MessageType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, MessageType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function MessageType_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    MessageType_descriptor(), enum_t_value);
+}
+inline bool MessageType_Parse(
+    const std::string& name, MessageType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<MessageType>(
+    MessageType_descriptor(), name, value);
+}
 // ===================================================================
 
-class Message :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:message.Message) */ {
+class BasicStringMsg :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:test_message.BasicStringMsg) */ {
  public:
-  Message();
-  virtual ~Message();
+  BasicStringMsg();
+  virtual ~BasicStringMsg();
 
-  Message(const Message& from);
-  Message(Message&& from) noexcept
-    : Message() {
+  BasicStringMsg(const BasicStringMsg& from);
+  BasicStringMsg(BasicStringMsg&& from) noexcept
+    : BasicStringMsg() {
     *this = ::std::move(from);
   }
 
-  inline Message& operator=(const Message& from) {
+  inline BasicStringMsg& operator=(const BasicStringMsg& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Message& operator=(Message&& from) noexcept {
+  inline BasicStringMsg& operator=(BasicStringMsg&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -107,37 +130,37 @@ class Message :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const Message& default_instance();
+  static const BasicStringMsg& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Message* internal_default_instance() {
-    return reinterpret_cast<const Message*>(
-               &_Message_default_instance_);
+  static inline const BasicStringMsg* internal_default_instance() {
+    return reinterpret_cast<const BasicStringMsg*>(
+               &_BasicStringMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(Message& a, Message& b) {
+  friend void swap(BasicStringMsg& a, BasicStringMsg& b) {
     a.Swap(&b);
   }
-  inline void Swap(Message* other) {
+  inline void Swap(BasicStringMsg* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Message* New() const final {
-    return CreateMaybeMessage<Message>(nullptr);
+  inline BasicStringMsg* New() const final {
+    return CreateMaybeMessage<BasicStringMsg>(nullptr);
   }
 
-  Message* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<Message>(arena);
+  BasicStringMsg* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<BasicStringMsg>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const Message& from);
-  void MergeFrom(const Message& from);
+  void CopyFrom(const BasicStringMsg& from);
+  void MergeFrom(const BasicStringMsg& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -151,10 +174,10 @@ class Message :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Message* other);
+  void InternalSwap(BasicStringMsg* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "message.Message";
+    return "test_message.BasicStringMsg";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -179,38 +202,36 @@ class Message :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kIdFieldNumber = 1,
+    kStrFieldNumber = 1,
   };
-  // repeated int32 id = 1;
-  int id_size() const;
+  // required string str = 1;
+  bool has_str() const;
   private:
-  int _internal_id_size() const;
+  bool _internal_has_str() const;
   public:
-  void clear_id();
+  void clear_str();
+  const std::string& str() const;
+  void set_str(const std::string& value);
+  void set_str(std::string&& value);
+  void set_str(const char* value);
+  void set_str(const char* value, size_t size);
+  std::string* mutable_str();
+  std::string* release_str();
+  void set_allocated_str(std::string* str);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_id(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
-      _internal_id() const;
-  void _internal_add_id(::PROTOBUF_NAMESPACE_ID::int32 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
-      _internal_mutable_id();
+  const std::string& _internal_str() const;
+  void _internal_set_str(const std::string& value);
+  std::string* _internal_mutable_str();
   public:
-  ::PROTOBUF_NAMESPACE_ID::int32 id(int index) const;
-  void set_id(int index, ::PROTOBUF_NAMESPACE_ID::int32 value);
-  void add_id(::PROTOBUF_NAMESPACE_ID::int32 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
-      id() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
-      mutable_id();
 
-  // @@protoc_insertion_point(class_scope:message.Message)
+  // @@protoc_insertion_point(class_scope:test_message.BasicStringMsg)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr str_;
   friend struct ::TableStruct_test_2eproto;
 };
 // ===================================================================
@@ -222,53 +243,77 @@ class Message :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// Message
+// BasicStringMsg
 
-// repeated int32 id = 1;
-inline int Message::_internal_id_size() const {
-  return id_.size();
+// required string str = 1;
+inline bool BasicStringMsg::_internal_has_str() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
 }
-inline int Message::id_size() const {
-  return _internal_id_size();
+inline bool BasicStringMsg::has_str() const {
+  return _internal_has_str();
 }
-inline void Message::clear_id() {
-  id_.Clear();
+inline void BasicStringMsg::clear_str() {
+  str_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Message::_internal_id(int index) const {
-  return id_.Get(index);
+inline const std::string& BasicStringMsg::str() const {
+  // @@protoc_insertion_point(field_get:test_message.BasicStringMsg.str)
+  return _internal_str();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Message::id(int index) const {
-  // @@protoc_insertion_point(field_get:message.Message.id)
-  return _internal_id(index);
+inline void BasicStringMsg::set_str(const std::string& value) {
+  _internal_set_str(value);
+  // @@protoc_insertion_point(field_set:test_message.BasicStringMsg.str)
 }
-inline void Message::set_id(int index, ::PROTOBUF_NAMESPACE_ID::int32 value) {
-  id_.Set(index, value);
-  // @@protoc_insertion_point(field_set:message.Message.id)
+inline std::string* BasicStringMsg::mutable_str() {
+  // @@protoc_insertion_point(field_mutable:test_message.BasicStringMsg.str)
+  return _internal_mutable_str();
 }
-inline void Message::_internal_add_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  id_.Add(value);
+inline const std::string& BasicStringMsg::_internal_str() const {
+  return str_.GetNoArena();
 }
-inline void Message::add_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_add_id(value);
-  // @@protoc_insertion_point(field_add:message.Message.id)
+inline void BasicStringMsg::_internal_set_str(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  str_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
-Message::_internal_id() const {
-  return id_;
+inline void BasicStringMsg::set_str(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  str_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:test_message.BasicStringMsg.str)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
-Message::id() const {
-  // @@protoc_insertion_point(field_list:message.Message.id)
-  return _internal_id();
+inline void BasicStringMsg::set_str(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  str_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:test_message.BasicStringMsg.str)
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
-Message::_internal_mutable_id() {
-  return &id_;
+inline void BasicStringMsg::set_str(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  str_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:test_message.BasicStringMsg.str)
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
-Message::mutable_id() {
-  // @@protoc_insertion_point(field_mutable_list:message.Message.id)
-  return _internal_mutable_id();
+inline std::string* BasicStringMsg::_internal_mutable_str() {
+  _has_bits_[0] |= 0x00000001u;
+  return str_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* BasicStringMsg::release_str() {
+  // @@protoc_insertion_point(field_release:test_message.BasicStringMsg.str)
+  if (!has_str()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return str_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void BasicStringMsg::set_allocated_str(std::string* str) {
+  if (str != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  str_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), str);
+  // @@protoc_insertion_point(field_set_allocated:test_message.BasicStringMsg.str)
 }
 
 #ifdef __GNUC__
@@ -277,7 +322,17 @@ Message::mutable_id() {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace message
+}  // namespace test_message
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::test_message::MessageType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::test_message::MessageType>() {
+  return ::test_message::MessageType_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

@@ -1,5 +1,12 @@
-package message;
+syntax = "proto2";
 
-message Message {
-    repeated int32 id = 1;
+package test_message;
+
+enum MessageType
+{
+  BASIC_STRING = 0;
+}
+
+message BasicStringMsg {
+    required string str = 1;
 }
