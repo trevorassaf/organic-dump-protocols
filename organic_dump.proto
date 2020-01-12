@@ -1,0 +1,79 @@
+syntax = "proto2";
+
+package organicdump_proto;
+
+enum MessageType
+{
+  // Client -> Server (0-127)
+  SERVER_ECHO = 0;
+  HELLO = 1;
+  REGISTER_CLIENT = 2;
+  REGISTER_SOIL_MOISTURE_SENSOR = 3;
+  UPDATE_PERIPHERAL_ASSOCIATION = 4;
+
+  // Server -> Client (128-255)
+  CLIENT_ECHO = 128;
+  BASIC_RESPONSE = 129;
+}
+
+enum ClientType
+{
+  CONTROL = 0;
+  RPI_POT = 1;
+}
+
+enum PeripheralType
+{
+  SOIL_MOISTURE_SENSOR = 0;
+  CAMERA_SENSOR = 1;
+  LUX_SENSOR = 2;
+  PIR_SENSOR = 3;
+  TEMPERATURE_SENSOR = 4;
+}
+
+message Echo
+{
+  required string message = 1;
+}
+
+message Hello
+{
+  required ClientType type = 1;
+  required int32 client_id = 2;
+}
+
+enum ErrorCode
+{
+  OK = 0;
+  UNAUTHOROZED = 1;
+  INVALID_PARAMETER = 2;
+}
+
+message BasicResponse
+{
+  required ErrorCode code = 1;
+  optional string message = 2;
+  optional int32 id = 3;
+}
+
+
+message RegisterClient
+{
+  required ClientType type = 1;
+  required string client_name = 2;
+  required string location = 3;
+}
+
+message RegisterSoilMoistureSensor
+{
+  required double floor = 1;
+  required double ceil = 2;
+}
+
+message UpdatePeripheralAssociation
+{
+  required int32 peripheral_id = 1;
+  required PeripheralType peripheral_type = 2;
+  required int32 client_id = 3;
+  required bool link_peripheral = 4;
+}

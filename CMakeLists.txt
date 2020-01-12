@@ -22,3 +22,6 @@ include_directories(../../../external/protobuf/repo/src/google/protbuf)
 
 add_library(test_proto SHARED test.pb.cc)
 target_link_libraries(test_proto protobuf::libprotobuf)
+
+add_library(organic_dump_proto SHARED organic_dump.pb.cc)
+target_link_libraries(organic_dump_proto protobuf::libprotobuf)
