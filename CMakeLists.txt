@@ -18,10 +18,13 @@
 
 cmake_minimum_required(VERSION 3.1)
 
-include_directories(../../../external/protobuf/repo/src/google/protbuf)
+include_directories(../../../external/protobuf/repo/src/google/protbuf
+                    ../../../code/organic-dump-network/repo)
 
 add_library(test_proto SHARED test.pb.cc)
 target_link_libraries(test_proto protobuf::libprotobuf)
 
-add_library(organic_dump_proto SHARED organic_dump.pb.cc)
+add_library(organic_dump_proto SHARED organic_dump.pb.cc OrganicDumpProtoMessage.cpp)
 target_link_libraries(organic_dump_proto protobuf::libprotobuf)
+target_link_libraries(organic_dump_proto glog::glog)
+target_link_libraries(organic_dump_proto organic_dump_network)
