@@ -114,11 +114,12 @@ inline bool MessageType_Parse(
     MessageType_descriptor(), name, value);
 }
 enum ClientType : int {
-  CONTROL = 0,
-  RPI_POT = 1
+  UNDIFFERENTIATED = 0,
+  CONTROL = 1,
+  RPI_POT = 2
 };
 bool ClientType_IsValid(int value);
-constexpr ClientType ClientType_MIN = CONTROL;
+constexpr ClientType ClientType_MIN = UNDIFFERENTIATED;
 constexpr ClientType ClientType_MAX = RPI_POT;
 constexpr int ClientType_ARRAYSIZE = ClientType_MAX + 1;
 

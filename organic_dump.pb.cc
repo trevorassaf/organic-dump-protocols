@@ -227,12 +227,13 @@ const char descriptor_table_protodef_organic_5fdump_2eproto[] PROTOBUF_SECTION_V
   "TER_CLIENT\020\002\022!\n\035REGISTER_SOIL_MOISTURE_S"
   "ENSOR\020\003\022!\n\035UPDATE_PERIPHERAL_ASSOCIATION"
   "\020\004\022\020\n\013CLIENT_ECHO\020\200\001\022\023\n\016BASIC_RESPONSE\020\201"
-  "\001*&\n\nClientType\022\013\n\007CONTROL\020\000\022\013\n\007RPI_POT\020"
-  "\001*u\n\016PeripheralType\022\030\n\024SOIL_MOISTURE_SEN"
-  "SOR\020\000\022\021\n\rCAMERA_SENSOR\020\001\022\016\n\nLUX_SENSOR\020\002"
-  "\022\016\n\nPIR_SENSOR\020\003\022\026\n\022TEMPERATURE_SENSOR\020\004"
-  "*<\n\tErrorCode\022\006\n\002OK\020\000\022\020\n\014UNAUTHOROZED\020\001\022"
-  "\025\n\021INVALID_PARAMETER\020\002"
+  "\001*<\n\nClientType\022\024\n\020UNDIFFERENTIATED\020\000\022\013\n"
+  "\007CONTROL\020\001\022\013\n\007RPI_POT\020\002*u\n\016PeripheralTyp"
+  "e\022\030\n\024SOIL_MOISTURE_SENSOR\020\000\022\021\n\rCAMERA_SE"
+  "NSOR\020\001\022\016\n\nLUX_SENSOR\020\002\022\016\n\nPIR_SENSOR\020\003\022\026"
+  "\n\022TEMPERATURE_SENSOR\020\004*<\n\tErrorCode\022\006\n\002O"
+  "K\020\000\022\020\n\014UNAUTHOROZED\020\001\022\025\n\021INVALID_PARAMET"
+  "ER\020\002"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_organic_5fdump_2eproto_deps[1] = {
 };
@@ -247,7 +248,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_org
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_organic_5fdump_2eproto_once;
 static bool descriptor_table_organic_5fdump_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_organic_5fdump_2eproto = {
-  &descriptor_table_organic_5fdump_2eproto_initialized, descriptor_table_protodef_organic_5fdump_2eproto, "organic_dump.proto", 942,
+  &descriptor_table_organic_5fdump_2eproto_initialized, descriptor_table_protodef_organic_5fdump_2eproto, "organic_dump.proto", 964,
   &descriptor_table_organic_5fdump_2eproto_once, descriptor_table_organic_5fdump_2eproto_sccs, descriptor_table_organic_5fdump_2eproto_deps, 6, 0,
   schemas, file_default_instances, TableStruct_organic_5fdump_2eproto::offsets,
   file_level_metadata_organic_5fdump_2eproto, 6, file_level_enum_descriptors_organic_5fdump_2eproto, file_level_service_descriptors_organic_5fdump_2eproto,
@@ -283,6 +284,7 @@ bool ClientType_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
+    case 2:
       return true;
     default:
       return false;

@@ -18,8 +18,9 @@ enum MessageType
 
 enum ClientType
 {
-  CONTROL = 0;
-  RPI_POT = 1;
+  UNDIFFERENTIATED = 0;
+  CONTROL = 1;
+  RPI_POT = 2;
 }
 
 enum PeripheralType
