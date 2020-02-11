@@ -12,7 +12,7 @@ using organicdump_proto::Hello;
 using organicdump_proto::MessageType;
 using organicdump_proto::RegisterClient;
 using organicdump_proto::RegisterSoilMoistureSensor;
-using organicdump_proto::UpdatePeripheralAssociation;
+using organicdump_proto::UpdatePeripheralOwnership;
 
 using network::TlsConnection;
 
@@ -37,9 +37,9 @@ OrganicDumpProtoMessage::OrganicDumpProtoMessage(RegisterSoilMoistureSensor msg)
   : type{MessageType::REGISTER_SOIL_MOISTURE_SENSOR},
     register_soil_moisture_sensor{std::move(msg)} {}
 
-OrganicDumpProtoMessage::OrganicDumpProtoMessage(UpdatePeripheralAssociation msg)
-  : type{MessageType::UPDATE_PERIPHERAL_ASSOCIATION},
-    update_peripheral_association{std::move(msg)} {}
+OrganicDumpProtoMessage::OrganicDumpProtoMessage(UpdatePeripheralOwnership msg)
+  : type{MessageType::UPDATE_PERIPHERAL_OWNERSHIP},
+    update_peripheral_ownership{std::move(msg)} {}
 
 OrganicDumpProtoMessage::OrganicDumpProtoMessage(BasicResponse msg)
   : type{MessageType::BASIC_RESPONSE},
@@ -75,8 +75,8 @@ void OrganicDumpProtoMessage::CloseResources()
     case MessageType::REGISTER_SOIL_MOISTURE_SENSOR:
       register_soil_moisture_sensor.~RegisterSoilMoistureSensor();
       break;
-    case MessageType::UPDATE_PERIPHERAL_ASSOCIATION:
-      update_peripheral_association.~UpdatePeripheralAssociation();
+    case MessageType::UPDATE_PERIPHERAL_OWNERSHIP:
+      update_peripheral_ownership.~UpdatePeripheralOwnership();
       break;
     case MessageType::BASIC_RESPONSE:
       basic_response.~BasicResponse();
@@ -108,10 +108,10 @@ void OrganicDumpProtoMessage::StealResources(OrganicDumpProtoMessage *other)
           std::move(other->register_soil_moisture_sensor)};
       other->register_soil_moisture_sensor.~RegisterSoilMoistureSensor();
       break;
-    case MessageType::UPDATE_PERIPHERAL_ASSOCIATION:
-      new (&update_peripheral_association) UpdatePeripheralAssociation{
-          std::move(other->update_peripheral_association)};
-      other->update_peripheral_association.~UpdatePeripheralAssociation();
+    case MessageType::UPDATE_PERIPHERAL_OWNERSHIP:
+      new (&update_peripheral_ownership) UpdatePeripheralOwnership{
+          std::move(other->update_peripheral_ownership)};
+      other->update_peripheral_ownership.~UpdatePeripheralOwnership();
       break;
     case MessageType::BASIC_RESPONSE:
       new (&basic_response) BasicResponse{std::move(other->basic_response)};
@@ -147,8 +147,8 @@ bool SendTlsProtobufMessage(
         case MessageType::REGISTER_SOIL_MOISTURE_SENSOR:
           msg = &organic_dump_msg->register_soil_moisture_sensor;
           break;
-        case MessageType::UPDATE_PERIPHERAL_ASSOCIATION:
-          msg = &organic_dump_msg->update_peripheral_association;
+        case MessageType::UPDATE_PERIPHERAL_OWNERSHIP:
+          msg = &organic_dump_msg->update_peripheral_ownership;
           break;
         case MessageType::BASIC_RESPONSE:
           msg = &organic_dump_msg->basic_response;
@@ -210,12 +210,12 @@ bool ReadTlsProtobufMessage(
               buffer,
               header.size,
               &out_msg->register_soil_moisture_sensor);
-        case MessageType::UPDATE_PERIPHERAL_ASSOCIATION:
+        case MessageType::UPDATE_PERIPHERAL_OWNERSHIP:
           return ReadTlsProtobufMessageBody(
               cxn,
               buffer,
               header.size,
-              &out_msg->update_peripheral_association);
+              &out_msg->update_peripheral_ownership);
         case MessageType::BASIC_RESPONSE:
           return ReadTlsProtobufMessageBody(
               cxn,
@@ -249,8 +249,8 @@ std::string ToString(MessageType type) {
           return "REGISTER_CLIENT";
       case MessageType::REGISTER_SOIL_MOISTURE_SENSOR:
           return "REGISTER_SOIL_MOISTURE_SENSOR";
-      case MessageType::UPDATE_PERIPHERAL_ASSOCIATION:
-          return "UPDATE_PERIPHERAL_ASSOCIATION";
+      case MessageType::UPDATE_PERIPHERAL_OWNERSHIP:
+          return "UPDATE_PERIPHERAL_OWNERSHIP";
       case MessageType::BASIC_RESPONSE:
           return "BASIC_RESPONSE";
       default:

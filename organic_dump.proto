@@ -9,7 +9,7 @@ enum MessageType
   HELLO = 1;
   REGISTER_CLIENT = 2;
   REGISTER_SOIL_MOISTURE_SENSOR = 3;
-  UPDATE_PERIPHERAL_ASSOCIATION = 4;
+  UPDATE_PERIPHERAL_OWNERSHIP = 4;
 
   // Server -> Client (128-255)
   CLIENT_ECHO = 128;
@@ -57,7 +57,6 @@ message BasicResponse
   optional int32 id = 3;
 }
 
-
 message RegisterClient
 {
   required ClientType type = 1;
@@ -65,16 +64,23 @@ message RegisterClient
   required string location = 3;
 }
 
-message RegisterSoilMoistureSensor
+message PeripheralMeta
 {
-  required double floor = 1;
-  required double ceil = 2;
+  required string name = 1;
+  required string location = 2;
+  optional int32 rpi_id = 3;
 }
 
-message UpdatePeripheralAssociation
+message RegisterSoilMoistureSensor
+{
+  required PeripheralMeta meta = 1;
+  required double floor = 2;
+  required double ceil = 3;
+}
+
+message UpdatePeripheralOwnership
 {
   required int32 peripheral_id = 1;
-  required PeripheralType peripheral_type = 2;
-  required int32 client_id = 3;
-  required bool link_peripheral = 4;
+  required int32 rpi_id = 2;
+  required bool orphan_peripheral = 3;
 }

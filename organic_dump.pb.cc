@@ -14,6 +14,7 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_organic_5fdump_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PeripheralMeta_organic_5fdump_2eproto;
 namespace organicdump_proto {
 class EchoDefaultTypeInternal {
  public:
@@ -31,14 +32,18 @@ class RegisterClientDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RegisterClient> _instance;
 } _RegisterClient_default_instance_;
+class PeripheralMetaDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PeripheralMeta> _instance;
+} _PeripheralMeta_default_instance_;
 class RegisterSoilMoistureSensorDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RegisterSoilMoistureSensor> _instance;
 } _RegisterSoilMoistureSensor_default_instance_;
-class UpdatePeripheralAssociationDefaultTypeInternal {
+class UpdatePeripheralOwnershipDefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UpdatePeripheralAssociation> _instance;
-} _UpdatePeripheralAssociation_default_instance_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UpdatePeripheralOwnership> _instance;
+} _UpdatePeripheralOwnership_default_instance_;
 }  // namespace organicdump_proto
 static void InitDefaultsscc_info_BasicResponse_organic_5fdump_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -82,6 +87,20 @@ static void InitDefaultsscc_info_Hello_organic_5fdump_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Hello_organic_5fdump_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Hello_organic_5fdump_2eproto}, {}};
 
+static void InitDefaultsscc_info_PeripheralMeta_organic_5fdump_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::organicdump_proto::_PeripheralMeta_default_instance_;
+    new (ptr) ::organicdump_proto::PeripheralMeta();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::organicdump_proto::PeripheralMeta::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PeripheralMeta_organic_5fdump_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_PeripheralMeta_organic_5fdump_2eproto}, {}};
+
 static void InitDefaultsscc_info_RegisterClient_organic_5fdump_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -107,24 +126,25 @@ static void InitDefaultsscc_info_RegisterSoilMoistureSensor_organic_5fdump_2epro
   ::organicdump_proto::RegisterSoilMoistureSensor::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RegisterSoilMoistureSensor_organic_5fdump_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RegisterSoilMoistureSensor_organic_5fdump_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_RegisterSoilMoistureSensor_organic_5fdump_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_RegisterSoilMoistureSensor_organic_5fdump_2eproto}, {
+      &scc_info_PeripheralMeta_organic_5fdump_2eproto.base,}};
 
-static void InitDefaultsscc_info_UpdatePeripheralAssociation_organic_5fdump_2eproto() {
+static void InitDefaultsscc_info_UpdatePeripheralOwnership_organic_5fdump_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::organicdump_proto::_UpdatePeripheralAssociation_default_instance_;
-    new (ptr) ::organicdump_proto::UpdatePeripheralAssociation();
+    void* ptr = &::organicdump_proto::_UpdatePeripheralOwnership_default_instance_;
+    new (ptr) ::organicdump_proto::UpdatePeripheralOwnership();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::organicdump_proto::UpdatePeripheralAssociation::InitAsDefaultInstance();
+  ::organicdump_proto::UpdatePeripheralOwnership::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UpdatePeripheralAssociation_organic_5fdump_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_UpdatePeripheralAssociation_organic_5fdump_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UpdatePeripheralOwnership_organic_5fdump_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_UpdatePeripheralOwnership_organic_5fdump_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_organic_5fdump_2eproto[6];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_organic_5fdump_2eproto[7];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_organic_5fdump_2eproto[4];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_organic_5fdump_2eproto = nullptr;
 
@@ -167,36 +187,48 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_organic_5fdump_2eproto::offset
   2,
   0,
   1,
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::PeripheralMeta, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::PeripheralMeta, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::PeripheralMeta, name_),
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::PeripheralMeta, location_),
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::PeripheralMeta, rpi_id_),
+  0,
+  1,
+  2,
   PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterSoilMoistureSensor, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterSoilMoistureSensor, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterSoilMoistureSensor, meta_),
   PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterSoilMoistureSensor, floor_),
   PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterSoilMoistureSensor, ceil_),
   0,
   1,
-  PROTOBUF_FIELD_OFFSET(::organicdump_proto::UpdatePeripheralAssociation, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::organicdump_proto::UpdatePeripheralAssociation, _internal_metadata_),
+  2,
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::UpdatePeripheralOwnership, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::UpdatePeripheralOwnership, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::organicdump_proto::UpdatePeripheralAssociation, peripheral_id_),
-  PROTOBUF_FIELD_OFFSET(::organicdump_proto::UpdatePeripheralAssociation, peripheral_type_),
-  PROTOBUF_FIELD_OFFSET(::organicdump_proto::UpdatePeripheralAssociation, client_id_),
-  PROTOBUF_FIELD_OFFSET(::organicdump_proto::UpdatePeripheralAssociation, link_peripheral_),
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::UpdatePeripheralOwnership, peripheral_id_),
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::UpdatePeripheralOwnership, rpi_id_),
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::UpdatePeripheralOwnership, orphan_peripheral_),
   0,
   1,
   2,
-  3,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 6, sizeof(::organicdump_proto::Echo)},
   { 7, 14, sizeof(::organicdump_proto::Hello)},
   { 16, 24, sizeof(::organicdump_proto::BasicResponse)},
   { 27, 35, sizeof(::organicdump_proto::RegisterClient)},
-  { 38, 45, sizeof(::organicdump_proto::RegisterSoilMoistureSensor)},
-  { 47, 56, sizeof(::organicdump_proto::UpdatePeripheralAssociation)},
+  { 38, 46, sizeof(::organicdump_proto::PeripheralMeta)},
+  { 49, 57, sizeof(::organicdump_proto::RegisterSoilMoistureSensor)},
+  { 60, 68, sizeof(::organicdump_proto::UpdatePeripheralOwnership)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -204,8 +236,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_Hello_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_BasicResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_RegisterClient_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_PeripheralMeta_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_RegisterSoilMoistureSensor_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_UpdatePeripheralAssociation_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_UpdatePeripheralOwnership_default_instance_),
 };
 
 const char descriptor_table_protodef_organic_5fdump_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -217,41 +250,43 @@ const char descriptor_table_protodef_organic_5fdump_2eproto[] PROTOBUF_SECTION_V
   "\n\007message\030\002 \001(\t\022\n\n\002id\030\003 \001(\005\"d\n\016RegisterC"
   "lient\022+\n\004type\030\001 \002(\0162\035.organicdump_proto."
   "ClientType\022\023\n\013client_name\030\002 \002(\t\022\020\n\010locat"
-  "ion\030\003 \002(\t\"9\n\032RegisterSoilMoistureSensor\022"
-  "\r\n\005floor\030\001 \002(\001\022\014\n\004ceil\030\002 \002(\001\"\234\001\n\033UpdateP"
-  "eripheralAssociation\022\025\n\rperipheral_id\030\001 "
-  "\002(\005\022:\n\017peripheral_type\030\002 \002(\0162!.organicdu"
-  "mp_proto.PeripheralType\022\021\n\tclient_id\030\003 \002"
-  "(\005\022\027\n\017link_peripheral\030\004 \002(\010*\253\001\n\013MessageT"
-  "ype\022\017\n\013SERVER_ECHO\020\000\022\t\n\005HELLO\020\001\022\023\n\017REGIS"
-  "TER_CLIENT\020\002\022!\n\035REGISTER_SOIL_MOISTURE_S"
-  "ENSOR\020\003\022!\n\035UPDATE_PERIPHERAL_ASSOCIATION"
-  "\020\004\022\020\n\013CLIENT_ECHO\020\200\001\022\023\n\016BASIC_RESPONSE\020\201"
-  "\001*<\n\nClientType\022\024\n\020UNDIFFERENTIATED\020\000\022\013\n"
-  "\007CONTROL\020\001\022\013\n\007RPI_POT\020\002*u\n\016PeripheralTyp"
-  "e\022\030\n\024SOIL_MOISTURE_SENSOR\020\000\022\021\n\rCAMERA_SE"
-  "NSOR\020\001\022\016\n\nLUX_SENSOR\020\002\022\016\n\nPIR_SENSOR\020\003\022\026"
-  "\n\022TEMPERATURE_SENSOR\020\004*<\n\tErrorCode\022\006\n\002O"
-  "K\020\000\022\020\n\014UNAUTHOROZED\020\001\022\025\n\021INVALID_PARAMET"
-  "ER\020\002"
+  "ion\030\003 \002(\t\"@\n\016PeripheralMeta\022\014\n\004name\030\001 \002("
+  "\t\022\020\n\010location\030\002 \002(\t\022\016\n\006rpi_id\030\003 \002(\005\"j\n\032R"
+  "egisterSoilMoistureSensor\022/\n\004meta\030\001 \002(\0132"
+  "!.organicdump_proto.PeripheralMeta\022\r\n\005fl"
+  "oor\030\002 \002(\001\022\014\n\004ceil\030\003 \002(\001\"]\n\031UpdatePeriphe"
+  "ralOwnership\022\025\n\rperipheral_id\030\001 \002(\005\022\016\n\006r"
+  "pi_id\030\002 \002(\005\022\031\n\021orphan_peripheral\030\003 \002(\010*\251"
+  "\001\n\013MessageType\022\017\n\013SERVER_ECHO\020\000\022\t\n\005HELLO"
+  "\020\001\022\023\n\017REGISTER_CLIENT\020\002\022!\n\035REGISTER_SOIL"
+  "_MOISTURE_SENSOR\020\003\022\037\n\033UPDATE_PERIPHERAL_"
+  "OWNERSHIP\020\004\022\020\n\013CLIENT_ECHO\020\200\001\022\023\n\016BASIC_R"
+  "ESPONSE\020\201\001*<\n\nClientType\022\024\n\020UNDIFFERENTI"
+  "ATED\020\000\022\013\n\007CONTROL\020\001\022\013\n\007RPI_POT\020\002*u\n\016Peri"
+  "pheralType\022\030\n\024SOIL_MOISTURE_SENSOR\020\000\022\021\n\r"
+  "CAMERA_SENSOR\020\001\022\016\n\nLUX_SENSOR\020\002\022\016\n\nPIR_S"
+  "ENSOR\020\003\022\026\n\022TEMPERATURE_SENSOR\020\004*<\n\tError"
+  "Code\022\006\n\002OK\020\000\022\020\n\014UNAUTHOROZED\020\001\022\025\n\021INVALI"
+  "D_PARAMETER\020\002"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_organic_5fdump_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_organic_5fdump_2eproto_sccs[6] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_organic_5fdump_2eproto_sccs[7] = {
   &scc_info_BasicResponse_organic_5fdump_2eproto.base,
   &scc_info_Echo_organic_5fdump_2eproto.base,
   &scc_info_Hello_organic_5fdump_2eproto.base,
+  &scc_info_PeripheralMeta_organic_5fdump_2eproto.base,
   &scc_info_RegisterClient_organic_5fdump_2eproto.base,
   &scc_info_RegisterSoilMoistureSensor_organic_5fdump_2eproto.base,
-  &scc_info_UpdatePeripheralAssociation_organic_5fdump_2eproto.base,
+  &scc_info_UpdatePeripheralOwnership_organic_5fdump_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_organic_5fdump_2eproto_once;
 static bool descriptor_table_organic_5fdump_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_organic_5fdump_2eproto = {
-  &descriptor_table_organic_5fdump_2eproto_initialized, descriptor_table_protodef_organic_5fdump_2eproto, "organic_dump.proto", 964,
-  &descriptor_table_organic_5fdump_2eproto_once, descriptor_table_organic_5fdump_2eproto_sccs, descriptor_table_organic_5fdump_2eproto_deps, 6, 0,
+  &descriptor_table_organic_5fdump_2eproto_initialized, descriptor_table_protodef_organic_5fdump_2eproto, "organic_dump.proto", 1013,
+  &descriptor_table_organic_5fdump_2eproto_once, descriptor_table_organic_5fdump_2eproto_sccs, descriptor_table_organic_5fdump_2eproto_deps, 7, 0,
   schemas, file_default_instances, TableStruct_organic_5fdump_2eproto::offsets,
-  file_level_metadata_organic_5fdump_2eproto, 6, file_level_enum_descriptors_organic_5fdump_2eproto, file_level_service_descriptors_organic_5fdump_2eproto,
+  file_level_metadata_organic_5fdump_2eproto, 7, file_level_enum_descriptors_organic_5fdump_2eproto, file_level_service_descriptors_organic_5fdump_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -1402,19 +1437,344 @@ void RegisterClient::InternalSwap(RegisterClient* other) {
 
 // ===================================================================
 
+void PeripheralMeta::InitAsDefaultInstance() {
+}
+class PeripheralMeta::_Internal {
+ public:
+  using HasBits = decltype(std::declval<PeripheralMeta>()._has_bits_);
+  static void set_has_name(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_location(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_rpi_id(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+};
+
+PeripheralMeta::PeripheralMeta()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:organicdump_proto.PeripheralMeta)
+}
+PeripheralMeta::PeripheralMeta(const PeripheralMeta& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_name()) {
+    name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  location_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_location()) {
+    location_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.location_);
+  }
+  rpi_id_ = from.rpi_id_;
+  // @@protoc_insertion_point(copy_constructor:organicdump_proto.PeripheralMeta)
+}
+
+void PeripheralMeta::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_PeripheralMeta_organic_5fdump_2eproto.base);
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  location_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  rpi_id_ = 0;
+}
+
+PeripheralMeta::~PeripheralMeta() {
+  // @@protoc_insertion_point(destructor:organicdump_proto.PeripheralMeta)
+  SharedDtor();
+}
+
+void PeripheralMeta::SharedDtor() {
+  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  location_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void PeripheralMeta::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const PeripheralMeta& PeripheralMeta::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_PeripheralMeta_organic_5fdump_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void PeripheralMeta::Clear() {
+// @@protoc_insertion_point(message_clear_start:organicdump_proto.PeripheralMeta)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      name_.ClearNonDefaultToEmptyNoArena();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      location_.ClearNonDefaultToEmptyNoArena();
+    }
+  }
+  rpi_id_ = 0;
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+const char* PeripheralMeta::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // required string name = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_name(), ptr, ctx, "organicdump_proto.PeripheralMeta.name");
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // required string location = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_location(), ptr, ctx, "organicdump_proto.PeripheralMeta.location");
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // required int32 rpi_id = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          _Internal::set_has_rpi_id(&has_bits);
+          rpi_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* PeripheralMeta::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:organicdump_proto.PeripheralMeta)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required string name = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "organicdump_proto.PeripheralMeta.name");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
+  }
+
+  // required string location = 2;
+  if (cached_has_bits & 0x00000002u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_location().data(), static_cast<int>(this->_internal_location().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "organicdump_proto.PeripheralMeta.location");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_location(), target);
+  }
+
+  // required int32 rpi_id = 3;
+  if (cached_has_bits & 0x00000004u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_rpi_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:organicdump_proto.PeripheralMeta)
+  return target;
+}
+
+size_t PeripheralMeta::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:organicdump_proto.PeripheralMeta)
+  size_t total_size = 0;
+
+  if (has_name()) {
+    // required string name = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
+  }
+
+  if (has_location()) {
+    // required string location = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_location());
+  }
+
+  if (has_rpi_id()) {
+    // required int32 rpi_id = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_rpi_id());
+  }
+
+  return total_size;
+}
+size_t PeripheralMeta::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:organicdump_proto.PeripheralMeta)
+  size_t total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+    // required string name = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
+
+    // required string location = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_location());
+
+    // required int32 rpi_id = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_rpi_id());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void PeripheralMeta::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:organicdump_proto.PeripheralMeta)
+  GOOGLE_DCHECK_NE(&from, this);
+  const PeripheralMeta* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<PeripheralMeta>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:organicdump_proto.PeripheralMeta)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:organicdump_proto.PeripheralMeta)
+    MergeFrom(*source);
+  }
+}
+
+void PeripheralMeta::MergeFrom(const PeripheralMeta& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:organicdump_proto.PeripheralMeta)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000007u) {
+    if (cached_has_bits & 0x00000001u) {
+      _has_bits_[0] |= 0x00000001u;
+      name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _has_bits_[0] |= 0x00000002u;
+      location_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.location_);
+    }
+    if (cached_has_bits & 0x00000004u) {
+      rpi_id_ = from.rpi_id_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+}
+
+void PeripheralMeta::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:organicdump_proto.PeripheralMeta)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void PeripheralMeta::CopyFrom(const PeripheralMeta& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:organicdump_proto.PeripheralMeta)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PeripheralMeta::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  return true;
+}
+
+void PeripheralMeta::InternalSwap(PeripheralMeta* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  location_.Swap(&other->location_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(rpi_id_, other->rpi_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata PeripheralMeta::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 void RegisterSoilMoistureSensor::InitAsDefaultInstance() {
+  ::organicdump_proto::_RegisterSoilMoistureSensor_default_instance_._instance.get_mutable()->meta_ = const_cast< ::organicdump_proto::PeripheralMeta*>(
+      ::organicdump_proto::PeripheralMeta::internal_default_instance());
 }
 class RegisterSoilMoistureSensor::_Internal {
  public:
   using HasBits = decltype(std::declval<RegisterSoilMoistureSensor>()._has_bits_);
-  static void set_has_floor(HasBits* has_bits) {
+  static const ::organicdump_proto::PeripheralMeta& meta(const RegisterSoilMoistureSensor* msg);
+  static void set_has_meta(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
-  static void set_has_ceil(HasBits* has_bits) {
+  static void set_has_floor(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
+  }
+  static void set_has_ceil(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
   }
 };
 
+const ::organicdump_proto::PeripheralMeta&
+RegisterSoilMoistureSensor::_Internal::meta(const RegisterSoilMoistureSensor* msg) {
+  return *msg->meta_;
+}
 RegisterSoilMoistureSensor::RegisterSoilMoistureSensor()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
@@ -1425,6 +1785,11 @@ RegisterSoilMoistureSensor::RegisterSoilMoistureSensor(const RegisterSoilMoistur
       _internal_metadata_(nullptr),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from._internal_has_meta()) {
+    meta_ = new ::organicdump_proto::PeripheralMeta(*from.meta_);
+  } else {
+    meta_ = nullptr;
+  }
   ::memcpy(&floor_, &from.floor_,
     static_cast<size_t>(reinterpret_cast<char*>(&ceil_) -
     reinterpret_cast<char*>(&floor_)) + sizeof(ceil_));
@@ -1432,9 +1797,10 @@ RegisterSoilMoistureSensor::RegisterSoilMoistureSensor(const RegisterSoilMoistur
 }
 
 void RegisterSoilMoistureSensor::SharedCtor() {
-  ::memset(&floor_, 0, static_cast<size_t>(
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RegisterSoilMoistureSensor_organic_5fdump_2eproto.base);
+  ::memset(&meta_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&ceil_) -
-      reinterpret_cast<char*>(&floor_)) + sizeof(ceil_));
+      reinterpret_cast<char*>(&meta_)) + sizeof(ceil_));
 }
 
 RegisterSoilMoistureSensor::~RegisterSoilMoistureSensor() {
@@ -1443,6 +1809,7 @@ RegisterSoilMoistureSensor::~RegisterSoilMoistureSensor() {
 }
 
 void RegisterSoilMoistureSensor::SharedDtor() {
+  if (this != internal_default_instance()) delete meta_;
 }
 
 void RegisterSoilMoistureSensor::SetCachedSize(int size) const {
@@ -1461,7 +1828,11 @@ void RegisterSoilMoistureSensor::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(meta_ != nullptr);
+    meta_->Clear();
+  }
+  if (cached_has_bits & 0x00000006u) {
     ::memset(&floor_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&ceil_) -
         reinterpret_cast<char*>(&floor_)) + sizeof(ceil_));
@@ -1478,17 +1849,24 @@ const char* RegisterSoilMoistureSensor::_InternalParse(const char* ptr, ::PROTOB
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // required double floor = 1;
+      // required .organicdump_proto.PeripheralMeta meta = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 9)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_meta(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // required double floor = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17)) {
           _Internal::set_has_floor(&has_bits);
           floor_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
           ptr += sizeof(double);
         } else goto handle_unusual;
         continue;
-      // required double ceil = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17)) {
+      // required double ceil = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 25)) {
           _Internal::set_has_ceil(&has_bits);
           ceil_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
           ptr += sizeof(double);
@@ -1522,16 +1900,24 @@ failure:
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // required double floor = 1;
+  // required .organicdump_proto.PeripheralMeta meta = 1;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(1, this->_internal_floor(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        1, _Internal::meta(this), target, stream);
   }
 
-  // required double ceil = 2;
+  // required double floor = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_ceil(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_floor(), target);
+  }
+
+  // required double ceil = 3;
+  if (cached_has_bits & 0x00000004u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(3, this->_internal_ceil(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1546,13 +1932,20 @@ size_t RegisterSoilMoistureSensor::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:organicdump_proto.RegisterSoilMoistureSensor)
   size_t total_size = 0;
 
+  if (has_meta()) {
+    // required .organicdump_proto.PeripheralMeta meta = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *meta_);
+  }
+
   if (has_floor()) {
-    // required double floor = 1;
+    // required double floor = 2;
     total_size += 1 + 8;
   }
 
   if (has_ceil()) {
-    // required double ceil = 2;
+    // required double ceil = 3;
     total_size += 1 + 8;
   }
 
@@ -1562,11 +1955,16 @@ size_t RegisterSoilMoistureSensor::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:organicdump_proto.RegisterSoilMoistureSensor)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
-    // required double floor = 1;
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+    // required .organicdump_proto.PeripheralMeta meta = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *meta_);
+
+    // required double floor = 2;
     total_size += 1 + 8;
 
-    // required double ceil = 2;
+    // required double ceil = 3;
     total_size += 1 + 8;
 
   } else {
@@ -1608,11 +2006,14 @@ void RegisterSoilMoistureSensor::MergeFrom(const RegisterSoilMoistureSensor& fro
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
-      floor_ = from.floor_;
+      _internal_mutable_meta()->::organicdump_proto::PeripheralMeta::MergeFrom(from._internal_meta());
     }
     if (cached_has_bits & 0x00000002u) {
+      floor_ = from.floor_;
+    }
+    if (cached_has_bits & 0x00000004u) {
       ceil_ = from.ceil_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -1634,7 +2035,10 @@ void RegisterSoilMoistureSensor::CopyFrom(const RegisterSoilMoistureSensor& from
 }
 
 bool RegisterSoilMoistureSensor::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if (has_meta()) {
+    if (!this->meta_->IsInitialized()) return false;
+  }
   return true;
 }
 
@@ -1642,6 +2046,7 @@ void RegisterSoilMoistureSensor::InternalSwap(RegisterSoilMoistureSensor* other)
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(meta_, other->meta_);
   swap(floor_, other->floor_);
   swap(ceil_, other->ceil_);
 }
@@ -1653,81 +2058,78 @@ void RegisterSoilMoistureSensor::InternalSwap(RegisterSoilMoistureSensor* other)
 
 // ===================================================================
 
-void UpdatePeripheralAssociation::InitAsDefaultInstance() {
+void UpdatePeripheralOwnership::InitAsDefaultInstance() {
 }
-class UpdatePeripheralAssociation::_Internal {
+class UpdatePeripheralOwnership::_Internal {
  public:
-  using HasBits = decltype(std::declval<UpdatePeripheralAssociation>()._has_bits_);
+  using HasBits = decltype(std::declval<UpdatePeripheralOwnership>()._has_bits_);
   static void set_has_peripheral_id(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
-  static void set_has_peripheral_type(HasBits* has_bits) {
+  static void set_has_rpi_id(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
-  static void set_has_client_id(HasBits* has_bits) {
+  static void set_has_orphan_peripheral(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
-  }
-  static void set_has_link_peripheral(HasBits* has_bits) {
-    (*has_bits)[0] |= 8u;
   }
 };
 
-UpdatePeripheralAssociation::UpdatePeripheralAssociation()
+UpdatePeripheralOwnership::UpdatePeripheralOwnership()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:organicdump_proto.UpdatePeripheralAssociation)
+  // @@protoc_insertion_point(constructor:organicdump_proto.UpdatePeripheralOwnership)
 }
-UpdatePeripheralAssociation::UpdatePeripheralAssociation(const UpdatePeripheralAssociation& from)
+UpdatePeripheralOwnership::UpdatePeripheralOwnership(const UpdatePeripheralOwnership& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&peripheral_id_, &from.peripheral_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&link_peripheral_) -
-    reinterpret_cast<char*>(&peripheral_id_)) + sizeof(link_peripheral_));
-  // @@protoc_insertion_point(copy_constructor:organicdump_proto.UpdatePeripheralAssociation)
+    static_cast<size_t>(reinterpret_cast<char*>(&orphan_peripheral_) -
+    reinterpret_cast<char*>(&peripheral_id_)) + sizeof(orphan_peripheral_));
+  // @@protoc_insertion_point(copy_constructor:organicdump_proto.UpdatePeripheralOwnership)
 }
 
-void UpdatePeripheralAssociation::SharedCtor() {
+void UpdatePeripheralOwnership::SharedCtor() {
   ::memset(&peripheral_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&link_peripheral_) -
-      reinterpret_cast<char*>(&peripheral_id_)) + sizeof(link_peripheral_));
+      reinterpret_cast<char*>(&orphan_peripheral_) -
+      reinterpret_cast<char*>(&peripheral_id_)) + sizeof(orphan_peripheral_));
 }
 
-UpdatePeripheralAssociation::~UpdatePeripheralAssociation() {
-  // @@protoc_insertion_point(destructor:organicdump_proto.UpdatePeripheralAssociation)
+UpdatePeripheralOwnership::~UpdatePeripheralOwnership() {
+  // @@protoc_insertion_point(destructor:organicdump_proto.UpdatePeripheralOwnership)
   SharedDtor();
 }
 
-void UpdatePeripheralAssociation::SharedDtor() {
+void UpdatePeripheralOwnership::SharedDtor() {
 }
 
-void UpdatePeripheralAssociation::SetCachedSize(int size) const {
+void UpdatePeripheralOwnership::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const UpdatePeripheralAssociation& UpdatePeripheralAssociation::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_UpdatePeripheralAssociation_organic_5fdump_2eproto.base);
+const UpdatePeripheralOwnership& UpdatePeripheralOwnership::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_UpdatePeripheralOwnership_organic_5fdump_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void UpdatePeripheralAssociation::Clear() {
-// @@protoc_insertion_point(message_clear_start:organicdump_proto.UpdatePeripheralAssociation)
+void UpdatePeripheralOwnership::Clear() {
+// @@protoc_insertion_point(message_clear_start:organicdump_proto.UpdatePeripheralOwnership)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x00000007u) {
     ::memset(&peripheral_id_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&link_peripheral_) -
-        reinterpret_cast<char*>(&peripheral_id_)) + sizeof(link_peripheral_));
+        reinterpret_cast<char*>(&orphan_peripheral_) -
+        reinterpret_cast<char*>(&peripheral_id_)) + sizeof(orphan_peripheral_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
-const char* UpdatePeripheralAssociation::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* UpdatePeripheralOwnership::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
@@ -1743,31 +2145,19 @@ const char* UpdatePeripheralAssociation::_InternalParse(const char* ptr, ::PROTO
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // required .organicdump_proto.PeripheralType peripheral_type = 2;
+      // required int32 rpi_id = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          _Internal::set_has_rpi_id(&has_bits);
+          rpi_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          if (PROTOBUF_PREDICT_TRUE(::organicdump_proto::PeripheralType_IsValid(val))) {
-            _internal_set_peripheral_type(static_cast<::organicdump_proto::PeripheralType>(val));
-          } else {
-            ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(2, val, mutable_unknown_fields());
-          }
         } else goto handle_unusual;
         continue;
-      // required int32 client_id = 3;
+      // required bool orphan_peripheral = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          _Internal::set_has_client_id(&has_bits);
-          client_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // required bool link_peripheral = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          _Internal::set_has_link_peripheral(&has_bits);
-          link_peripheral_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          _Internal::set_has_orphan_peripheral(&has_bits);
+          orphan_peripheral_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1792,9 +2182,9 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* UpdatePeripheralAssociation::InternalSerializeWithCachedSizesToArray(
+::PROTOBUF_NAMESPACE_ID::uint8* UpdatePeripheralOwnership::InternalSerializeWithCachedSizesToArray(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:organicdump_proto.UpdatePeripheralAssociation)
+  // @@protoc_insertion_point(serialize_to_array_start:organicdump_proto.UpdatePeripheralOwnership)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1805,35 +2195,28 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_peripheral_id(), target);
   }
 
-  // required .organicdump_proto.PeripheralType peripheral_type = 2;
+  // required int32 rpi_id = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
-      2, this->_internal_peripheral_type(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_rpi_id(), target);
   }
 
-  // required int32 client_id = 3;
+  // required bool orphan_peripheral = 3;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_client_id(), target);
-  }
-
-  // required bool link_peripheral = 4;
-  if (cached_has_bits & 0x00000008u) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(4, this->_internal_link_peripheral(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_orphan_peripheral(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:organicdump_proto.UpdatePeripheralAssociation)
+  // @@protoc_insertion_point(serialize_to_array_end:organicdump_proto.UpdatePeripheralOwnership)
   return target;
 }
 
-size_t UpdatePeripheralAssociation::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:organicdump_proto.UpdatePeripheralAssociation)
+size_t UpdatePeripheralOwnership::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:organicdump_proto.UpdatePeripheralOwnership)
   size_t total_size = 0;
 
   if (has_peripheral_id()) {
@@ -1843,46 +2226,36 @@ size_t UpdatePeripheralAssociation::RequiredFieldsByteSizeFallback() const {
         this->_internal_peripheral_id());
   }
 
-  if (has_peripheral_type()) {
-    // required .organicdump_proto.PeripheralType peripheral_type = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_peripheral_type());
-  }
-
-  if (has_client_id()) {
-    // required int32 client_id = 3;
+  if (has_rpi_id()) {
+    // required int32 rpi_id = 2;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_client_id());
+        this->_internal_rpi_id());
   }
 
-  if (has_link_peripheral()) {
-    // required bool link_peripheral = 4;
+  if (has_orphan_peripheral()) {
+    // required bool orphan_peripheral = 3;
     total_size += 1 + 1;
   }
 
   return total_size;
 }
-size_t UpdatePeripheralAssociation::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:organicdump_proto.UpdatePeripheralAssociation)
+size_t UpdatePeripheralOwnership::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:organicdump_proto.UpdatePeripheralOwnership)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
     // required int32 peripheral_id = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_peripheral_id());
 
-    // required .organicdump_proto.PeripheralType peripheral_type = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_peripheral_type());
-
-    // required int32 client_id = 3;
+    // required int32 rpi_id = 2;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_client_id());
+        this->_internal_rpi_id());
 
-    // required bool link_peripheral = 4;
+    // required bool orphan_peripheral = 3;
     total_size += 1 + 1;
 
   } else {
@@ -1901,76 +2274,72 @@ size_t UpdatePeripheralAssociation::ByteSizeLong() const {
   return total_size;
 }
 
-void UpdatePeripheralAssociation::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:organicdump_proto.UpdatePeripheralAssociation)
+void UpdatePeripheralOwnership::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:organicdump_proto.UpdatePeripheralOwnership)
   GOOGLE_DCHECK_NE(&from, this);
-  const UpdatePeripheralAssociation* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<UpdatePeripheralAssociation>(
+  const UpdatePeripheralOwnership* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<UpdatePeripheralOwnership>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:organicdump_proto.UpdatePeripheralAssociation)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:organicdump_proto.UpdatePeripheralOwnership)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:organicdump_proto.UpdatePeripheralAssociation)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:organicdump_proto.UpdatePeripheralOwnership)
     MergeFrom(*source);
   }
 }
 
-void UpdatePeripheralAssociation::MergeFrom(const UpdatePeripheralAssociation& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:organicdump_proto.UpdatePeripheralAssociation)
+void UpdatePeripheralOwnership::MergeFrom(const UpdatePeripheralOwnership& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:organicdump_proto.UpdatePeripheralOwnership)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       peripheral_id_ = from.peripheral_id_;
     }
     if (cached_has_bits & 0x00000002u) {
-      peripheral_type_ = from.peripheral_type_;
+      rpi_id_ = from.rpi_id_;
     }
     if (cached_has_bits & 0x00000004u) {
-      client_id_ = from.client_id_;
-    }
-    if (cached_has_bits & 0x00000008u) {
-      link_peripheral_ = from.link_peripheral_;
+      orphan_peripheral_ = from.orphan_peripheral_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
 }
 
-void UpdatePeripheralAssociation::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:organicdump_proto.UpdatePeripheralAssociation)
+void UpdatePeripheralOwnership::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:organicdump_proto.UpdatePeripheralOwnership)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void UpdatePeripheralAssociation::CopyFrom(const UpdatePeripheralAssociation& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:organicdump_proto.UpdatePeripheralAssociation)
+void UpdatePeripheralOwnership::CopyFrom(const UpdatePeripheralOwnership& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:organicdump_proto.UpdatePeripheralOwnership)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool UpdatePeripheralAssociation::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+bool UpdatePeripheralOwnership::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
   return true;
 }
 
-void UpdatePeripheralAssociation::InternalSwap(UpdatePeripheralAssociation* other) {
+void UpdatePeripheralOwnership::InternalSwap(UpdatePeripheralOwnership* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   swap(peripheral_id_, other->peripheral_id_);
-  swap(peripheral_type_, other->peripheral_type_);
-  swap(client_id_, other->client_id_);
-  swap(link_peripheral_, other->link_peripheral_);
+  swap(rpi_id_, other->rpi_id_);
+  swap(orphan_peripheral_, other->orphan_peripheral_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata UpdatePeripheralAssociation::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata UpdatePeripheralOwnership::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -1990,11 +2359,14 @@ template<> PROTOBUF_NOINLINE ::organicdump_proto::BasicResponse* Arena::CreateMa
 template<> PROTOBUF_NOINLINE ::organicdump_proto::RegisterClient* Arena::CreateMaybeMessage< ::organicdump_proto::RegisterClient >(Arena* arena) {
   return Arena::CreateInternal< ::organicdump_proto::RegisterClient >(arena);
 }
+template<> PROTOBUF_NOINLINE ::organicdump_proto::PeripheralMeta* Arena::CreateMaybeMessage< ::organicdump_proto::PeripheralMeta >(Arena* arena) {
+  return Arena::CreateInternal< ::organicdump_proto::PeripheralMeta >(arena);
+}
 template<> PROTOBUF_NOINLINE ::organicdump_proto::RegisterSoilMoistureSensor* Arena::CreateMaybeMessage< ::organicdump_proto::RegisterSoilMoistureSensor >(Arena* arena) {
   return Arena::CreateInternal< ::organicdump_proto::RegisterSoilMoistureSensor >(arena);
 }
-template<> PROTOBUF_NOINLINE ::organicdump_proto::UpdatePeripheralAssociation* Arena::CreateMaybeMessage< ::organicdump_proto::UpdatePeripheralAssociation >(Arena* arena) {
-  return Arena::CreateInternal< ::organicdump_proto::UpdatePeripheralAssociation >(arena);
+template<> PROTOBUF_NOINLINE ::organicdump_proto::UpdatePeripheralOwnership* Arena::CreateMaybeMessage< ::organicdump_proto::UpdatePeripheralOwnership >(Arena* arena) {
+  return Arena::CreateInternal< ::organicdump_proto::UpdatePeripheralOwnership >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

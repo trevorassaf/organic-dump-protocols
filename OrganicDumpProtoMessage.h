@@ -18,7 +18,7 @@ struct OrganicDumpProtoMessage
       organicdump_proto::Hello hello;
       organicdump_proto::RegisterClient register_client;
       organicdump_proto::RegisterSoilMoistureSensor register_soil_moisture_sensor;
-      organicdump_proto::UpdatePeripheralAssociation update_peripheral_association;
+      organicdump_proto::UpdatePeripheralOwnership update_peripheral_ownership;
       organicdump_proto::BasicResponse basic_response;
   };
 
@@ -26,7 +26,7 @@ struct OrganicDumpProtoMessage
   OrganicDumpProtoMessage(organicdump_proto::Hello msg);
   OrganicDumpProtoMessage(organicdump_proto::RegisterClient msg);
   OrganicDumpProtoMessage(organicdump_proto::RegisterSoilMoistureSensor msg);
-  OrganicDumpProtoMessage(organicdump_proto::UpdatePeripheralAssociation msg);
+  OrganicDumpProtoMessage(organicdump_proto::UpdatePeripheralOwnership msg);
   OrganicDumpProtoMessage(organicdump_proto::BasicResponse msg);
   OrganicDumpProtoMessage(OrganicDumpProtoMessage &&other);
   OrganicDumpProtoMessage &operator=(OrganicDumpProtoMessage &&other);
