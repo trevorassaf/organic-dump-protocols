@@ -48,7 +48,7 @@ struct TableStruct_organic_5fdump_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[7]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[8]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -68,12 +68,15 @@ extern HelloDefaultTypeInternal _Hello_default_instance_;
 class PeripheralMeta;
 class PeripheralMetaDefaultTypeInternal;
 extern PeripheralMetaDefaultTypeInternal _PeripheralMeta_default_instance_;
-class RegisterClient;
-class RegisterClientDefaultTypeInternal;
-extern RegisterClientDefaultTypeInternal _RegisterClient_default_instance_;
+class RegisterRpi;
+class RegisterRpiDefaultTypeInternal;
+extern RegisterRpiDefaultTypeInternal _RegisterRpi_default_instance_;
 class RegisterSoilMoistureSensor;
 class RegisterSoilMoistureSensorDefaultTypeInternal;
 extern RegisterSoilMoistureSensorDefaultTypeInternal _RegisterSoilMoistureSensor_default_instance_;
+class SendSoilMoistureMeasurement;
+class SendSoilMoistureMeasurementDefaultTypeInternal;
+extern SendSoilMoistureMeasurementDefaultTypeInternal _SendSoilMoistureMeasurement_default_instance_;
 class UpdatePeripheralOwnership;
 class UpdatePeripheralOwnershipDefaultTypeInternal;
 extern UpdatePeripheralOwnershipDefaultTypeInternal _UpdatePeripheralOwnership_default_instance_;
@@ -83,8 +86,9 @@ template<> ::organicdump_proto::BasicResponse* Arena::CreateMaybeMessage<::organ
 template<> ::organicdump_proto::Echo* Arena::CreateMaybeMessage<::organicdump_proto::Echo>(Arena*);
 template<> ::organicdump_proto::Hello* Arena::CreateMaybeMessage<::organicdump_proto::Hello>(Arena*);
 template<> ::organicdump_proto::PeripheralMeta* Arena::CreateMaybeMessage<::organicdump_proto::PeripheralMeta>(Arena*);
-template<> ::organicdump_proto::RegisterClient* Arena::CreateMaybeMessage<::organicdump_proto::RegisterClient>(Arena*);
+template<> ::organicdump_proto::RegisterRpi* Arena::CreateMaybeMessage<::organicdump_proto::RegisterRpi>(Arena*);
 template<> ::organicdump_proto::RegisterSoilMoistureSensor* Arena::CreateMaybeMessage<::organicdump_proto::RegisterSoilMoistureSensor>(Arena*);
+template<> ::organicdump_proto::SendSoilMoistureMeasurement* Arena::CreateMaybeMessage<::organicdump_proto::SendSoilMoistureMeasurement>(Arena*);
 template<> ::organicdump_proto::UpdatePeripheralOwnership* Arena::CreateMaybeMessage<::organicdump_proto::UpdatePeripheralOwnership>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace organicdump_proto {
@@ -92,7 +96,7 @@ namespace organicdump_proto {
 enum MessageType : int {
   SERVER_ECHO = 0,
   HELLO = 1,
-  REGISTER_CLIENT = 2,
+  REGISTER_RPI = 2,
   REGISTER_SOIL_MOISTURE_SENSOR = 3,
   UPDATE_PERIPHERAL_OWNERSHIP = 4,
   CLIENT_ECHO = 128,
@@ -118,12 +122,12 @@ inline bool MessageType_Parse(
     MessageType_descriptor(), name, value);
 }
 enum ClientType : int {
-  UNDIFFERENTIATED = 0,
+  UNKNOWN = 0,
   CONTROL = 1,
   RPI_POT = 2
 };
 bool ClientType_IsValid(int value);
-constexpr ClientType ClientType_MIN = UNDIFFERENTIATED;
+constexpr ClientType ClientType_MIN = UNKNOWN;
 constexpr ClientType ClientType_MAX = RPI_POT;
 constexpr int ClientType_ARRAYSIZE = ClientType_MAX + 1;
 
@@ -170,11 +174,12 @@ inline bool PeripheralType_Parse(
 enum ErrorCode : int {
   OK = 0,
   UNAUTHOROZED = 1,
-  INVALID_PARAMETER = 2
+  INVALID_PARAMETER = 2,
+  INTERNAL_SERVER_ERROR = 3
 };
 bool ErrorCode_IsValid(int value);
 constexpr ErrorCode ErrorCode_MIN = OK;
-constexpr ErrorCode ErrorCode_MAX = INVALID_PARAMETER;
+constexpr ErrorCode ErrorCode_MAX = INTERNAL_SERVER_ERROR;
 constexpr int ErrorCode_ARRAYSIZE = ErrorCode_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ErrorCode_descriptor();
@@ -469,7 +474,7 @@ class Hello :
   void _internal_set_type(::organicdump_proto::ClientType value);
   public:
 
-  // required int32 client_id = 2;
+  // optional int32 client_id = 2;
   bool has_client_id() const;
   private:
   bool _internal_has_client_id() const;
@@ -485,9 +490,6 @@ class Hello :
   // @@protoc_insertion_point(class_scope:organicdump_proto.Hello)
  private:
   class _Internal;
-
-  // helper for ByteSizeLong()
-  size_t RequiredFieldsByteSizeFallback() const;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
@@ -675,23 +677,23 @@ class BasicResponse :
 };
 // -------------------------------------------------------------------
 
-class RegisterClient :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:organicdump_proto.RegisterClient) */ {
+class RegisterRpi :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:organicdump_proto.RegisterRpi) */ {
  public:
-  RegisterClient();
-  virtual ~RegisterClient();
+  RegisterRpi();
+  virtual ~RegisterRpi();
 
-  RegisterClient(const RegisterClient& from);
-  RegisterClient(RegisterClient&& from) noexcept
-    : RegisterClient() {
+  RegisterRpi(const RegisterRpi& from);
+  RegisterRpi(RegisterRpi&& from) noexcept
+    : RegisterRpi() {
     *this = ::std::move(from);
   }
 
-  inline RegisterClient& operator=(const RegisterClient& from) {
+  inline RegisterRpi& operator=(const RegisterRpi& from) {
     CopyFrom(from);
     return *this;
   }
-  inline RegisterClient& operator=(RegisterClient&& from) noexcept {
+  inline RegisterRpi& operator=(RegisterRpi&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -716,37 +718,37 @@ class RegisterClient :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const RegisterClient& default_instance();
+  static const RegisterRpi& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const RegisterClient* internal_default_instance() {
-    return reinterpret_cast<const RegisterClient*>(
-               &_RegisterClient_default_instance_);
+  static inline const RegisterRpi* internal_default_instance() {
+    return reinterpret_cast<const RegisterRpi*>(
+               &_RegisterRpi_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     3;
 
-  friend void swap(RegisterClient& a, RegisterClient& b) {
+  friend void swap(RegisterRpi& a, RegisterRpi& b) {
     a.Swap(&b);
   }
-  inline void Swap(RegisterClient* other) {
+  inline void Swap(RegisterRpi* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline RegisterClient* New() const final {
-    return CreateMaybeMessage<RegisterClient>(nullptr);
+  inline RegisterRpi* New() const final {
+    return CreateMaybeMessage<RegisterRpi>(nullptr);
   }
 
-  RegisterClient* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<RegisterClient>(arena);
+  RegisterRpi* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RegisterRpi>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const RegisterClient& from);
-  void MergeFrom(const RegisterClient& from);
+  void CopyFrom(const RegisterRpi& from);
+  void MergeFrom(const RegisterRpi& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -760,10 +762,10 @@ class RegisterClient :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(RegisterClient* other);
+  void InternalSwap(RegisterRpi* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "organicdump_proto.RegisterClient";
+    return "organicdump_proto.RegisterRpi";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -788,31 +790,30 @@ class RegisterClient :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kClientNameFieldNumber = 2,
-    kLocationFieldNumber = 3,
-    kTypeFieldNumber = 1,
+    kNameFieldNumber = 1,
+    kLocationFieldNumber = 2,
   };
-  // required string client_name = 2;
-  bool has_client_name() const;
+  // required string name = 1;
+  bool has_name() const;
   private:
-  bool _internal_has_client_name() const;
+  bool _internal_has_name() const;
   public:
-  void clear_client_name();
-  const std::string& client_name() const;
-  void set_client_name(const std::string& value);
-  void set_client_name(std::string&& value);
-  void set_client_name(const char* value);
-  void set_client_name(const char* value, size_t size);
-  std::string* mutable_client_name();
-  std::string* release_client_name();
-  void set_allocated_client_name(std::string* client_name);
+  void clear_name();
+  const std::string& name() const;
+  void set_name(const std::string& value);
+  void set_name(std::string&& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  std::string* mutable_name();
+  std::string* release_name();
+  void set_allocated_name(std::string* name);
   private:
-  const std::string& _internal_client_name() const;
-  void _internal_set_client_name(const std::string& value);
-  std::string* _internal_mutable_client_name();
+  const std::string& _internal_name() const;
+  void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
   public:
 
-  // required string location = 3;
+  // required string location = 2;
   bool has_location() const;
   private:
   bool _internal_has_location() const;
@@ -832,20 +833,7 @@ class RegisterClient :
   std::string* _internal_mutable_location();
   public:
 
-  // required .organicdump_proto.ClientType type = 1;
-  bool has_type() const;
-  private:
-  bool _internal_has_type() const;
-  public:
-  void clear_type();
-  ::organicdump_proto::ClientType type() const;
-  void set_type(::organicdump_proto::ClientType value);
-  private:
-  ::organicdump_proto::ClientType _internal_type() const;
-  void _internal_set_type(::organicdump_proto::ClientType value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:organicdump_proto.RegisterClient)
+  // @@protoc_insertion_point(class_scope:organicdump_proto.RegisterRpi)
  private:
   class _Internal;
 
@@ -855,9 +843,8 @@ class RegisterClient :
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr client_name_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr location_;
-  int type_;
   friend struct ::TableStruct_organic_5fdump_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1019,7 +1006,7 @@ class PeripheralMeta :
   std::string* _internal_mutable_location();
   public:
 
-  // required int32 rpi_id = 3;
+  // optional int32 rpi_id = 3;
   bool has_rpi_id() const;
   private:
   bool _internal_has_rpi_id() const;
@@ -1395,6 +1382,164 @@ class UpdatePeripheralOwnership :
   bool orphan_peripheral_;
   friend struct ::TableStruct_organic_5fdump_2eproto;
 };
+// -------------------------------------------------------------------
+
+class SendSoilMoistureMeasurement :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:organicdump_proto.SendSoilMoistureMeasurement) */ {
+ public:
+  SendSoilMoistureMeasurement();
+  virtual ~SendSoilMoistureMeasurement();
+
+  SendSoilMoistureMeasurement(const SendSoilMoistureMeasurement& from);
+  SendSoilMoistureMeasurement(SendSoilMoistureMeasurement&& from) noexcept
+    : SendSoilMoistureMeasurement() {
+    *this = ::std::move(from);
+  }
+
+  inline SendSoilMoistureMeasurement& operator=(const SendSoilMoistureMeasurement& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SendSoilMoistureMeasurement& operator=(SendSoilMoistureMeasurement&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const SendSoilMoistureMeasurement& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SendSoilMoistureMeasurement* internal_default_instance() {
+    return reinterpret_cast<const SendSoilMoistureMeasurement*>(
+               &_SendSoilMoistureMeasurement_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(SendSoilMoistureMeasurement& a, SendSoilMoistureMeasurement& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SendSoilMoistureMeasurement* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SendSoilMoistureMeasurement* New() const final {
+    return CreateMaybeMessage<SendSoilMoistureMeasurement>(nullptr);
+  }
+
+  SendSoilMoistureMeasurement* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<SendSoilMoistureMeasurement>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const SendSoilMoistureMeasurement& from);
+  void MergeFrom(const SendSoilMoistureMeasurement& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SendSoilMoistureMeasurement* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "organicdump_proto.SendSoilMoistureMeasurement";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_organic_5fdump_2eproto);
+    return ::descriptor_table_organic_5fdump_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSensorIdFieldNumber = 1,
+    kValueFieldNumber = 2,
+  };
+  // required int32 sensor_id = 1;
+  bool has_sensor_id() const;
+  private:
+  bool _internal_has_sensor_id() const;
+  public:
+  void clear_sensor_id();
+  ::PROTOBUF_NAMESPACE_ID::int32 sensor_id() const;
+  void set_sensor_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_sensor_id() const;
+  void _internal_set_sensor_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // required float value = 2;
+  bool has_value() const;
+  private:
+  bool _internal_has_value() const;
+  public:
+  void clear_value();
+  float value() const;
+  void set_value(float value);
+  private:
+  float _internal_value() const;
+  void _internal_set_value(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:organicdump_proto.SendSoilMoistureMeasurement)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::int32 sensor_id_;
+  float value_;
+  friend struct ::TableStruct_organic_5fdump_2eproto;
+};
 // ===================================================================
 
 
@@ -1510,7 +1655,7 @@ inline void Hello::set_type(::organicdump_proto::ClientType value) {
   // @@protoc_insertion_point(field_set:organicdump_proto.Hello.type)
 }
 
-// required int32 client_id = 2;
+// optional int32 client_id = 2;
 inline bool Hello::_internal_has_client_id() const {
   bool value = (_has_bits_[0] & 0x00000002u) != 0;
   return value;
@@ -1672,177 +1817,148 @@ inline void BasicResponse::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
 // -------------------------------------------------------------------
 
-// RegisterClient
+// RegisterRpi
 
-// required .organicdump_proto.ClientType type = 1;
-inline bool RegisterClient::_internal_has_type() const {
-  bool value = (_has_bits_[0] & 0x00000004u) != 0;
-  return value;
-}
-inline bool RegisterClient::has_type() const {
-  return _internal_has_type();
-}
-inline void RegisterClient::clear_type() {
-  type_ = 0;
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline ::organicdump_proto::ClientType RegisterClient::_internal_type() const {
-  return static_cast< ::organicdump_proto::ClientType >(type_);
-}
-inline ::organicdump_proto::ClientType RegisterClient::type() const {
-  // @@protoc_insertion_point(field_get:organicdump_proto.RegisterClient.type)
-  return _internal_type();
-}
-inline void RegisterClient::_internal_set_type(::organicdump_proto::ClientType value) {
-  assert(::organicdump_proto::ClientType_IsValid(value));
-  _has_bits_[0] |= 0x00000004u;
-  type_ = value;
-}
-inline void RegisterClient::set_type(::organicdump_proto::ClientType value) {
-  _internal_set_type(value);
-  // @@protoc_insertion_point(field_set:organicdump_proto.RegisterClient.type)
-}
-
-// required string client_name = 2;
-inline bool RegisterClient::_internal_has_client_name() const {
+// required string name = 1;
+inline bool RegisterRpi::_internal_has_name() const {
   bool value = (_has_bits_[0] & 0x00000001u) != 0;
   return value;
 }
-inline bool RegisterClient::has_client_name() const {
-  return _internal_has_client_name();
+inline bool RegisterRpi::has_name() const {
+  return _internal_has_name();
 }
-inline void RegisterClient::clear_client_name() {
-  client_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void RegisterRpi::clear_name() {
+  name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   _has_bits_[0] &= ~0x00000001u;
 }
-inline const std::string& RegisterClient::client_name() const {
-  // @@protoc_insertion_point(field_get:organicdump_proto.RegisterClient.client_name)
-  return _internal_client_name();
+inline const std::string& RegisterRpi::name() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.RegisterRpi.name)
+  return _internal_name();
 }
-inline void RegisterClient::set_client_name(const std::string& value) {
-  _internal_set_client_name(value);
-  // @@protoc_insertion_point(field_set:organicdump_proto.RegisterClient.client_name)
+inline void RegisterRpi::set_name(const std::string& value) {
+  _internal_set_name(value);
+  // @@protoc_insertion_point(field_set:organicdump_proto.RegisterRpi.name)
 }
-inline std::string* RegisterClient::mutable_client_name() {
-  // @@protoc_insertion_point(field_mutable:organicdump_proto.RegisterClient.client_name)
-  return _internal_mutable_client_name();
+inline std::string* RegisterRpi::mutable_name() {
+  // @@protoc_insertion_point(field_mutable:organicdump_proto.RegisterRpi.name)
+  return _internal_mutable_name();
 }
-inline const std::string& RegisterClient::_internal_client_name() const {
-  return client_name_.GetNoArena();
+inline const std::string& RegisterRpi::_internal_name() const {
+  return name_.GetNoArena();
 }
-inline void RegisterClient::_internal_set_client_name(const std::string& value) {
+inline void RegisterRpi::_internal_set_name(const std::string& value) {
   _has_bits_[0] |= 0x00000001u;
-  client_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
 }
-inline void RegisterClient::set_client_name(std::string&& value) {
+inline void RegisterRpi::set_name(std::string&& value) {
   _has_bits_[0] |= 0x00000001u;
-  client_name_.SetNoArena(
+  name_.SetNoArena(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:organicdump_proto.RegisterClient.client_name)
+  // @@protoc_insertion_point(field_set_rvalue:organicdump_proto.RegisterRpi.name)
 }
-inline void RegisterClient::set_client_name(const char* value) {
+inline void RegisterRpi::set_name(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   _has_bits_[0] |= 0x00000001u;
-  client_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:organicdump_proto.RegisterClient.client_name)
+  name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:organicdump_proto.RegisterRpi.name)
 }
-inline void RegisterClient::set_client_name(const char* value, size_t size) {
+inline void RegisterRpi::set_name(const char* value, size_t size) {
   _has_bits_[0] |= 0x00000001u;
-  client_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:organicdump_proto.RegisterClient.client_name)
+  // @@protoc_insertion_point(field_set_pointer:organicdump_proto.RegisterRpi.name)
 }
-inline std::string* RegisterClient::_internal_mutable_client_name() {
+inline std::string* RegisterRpi::_internal_mutable_name() {
   _has_bits_[0] |= 0x00000001u;
-  return client_name_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return name_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline std::string* RegisterClient::release_client_name() {
-  // @@protoc_insertion_point(field_release:organicdump_proto.RegisterClient.client_name)
-  if (!has_client_name()) {
+inline std::string* RegisterRpi::release_name() {
+  // @@protoc_insertion_point(field_release:organicdump_proto.RegisterRpi.name)
+  if (!has_name()) {
     return nullptr;
   }
   _has_bits_[0] &= ~0x00000001u;
-  return client_name_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return name_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline void RegisterClient::set_allocated_client_name(std::string* client_name) {
-  if (client_name != nullptr) {
+inline void RegisterRpi::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
     _has_bits_[0] |= 0x00000001u;
   } else {
     _has_bits_[0] &= ~0x00000001u;
   }
-  client_name_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), client_name);
-  // @@protoc_insertion_point(field_set_allocated:organicdump_proto.RegisterClient.client_name)
+  name_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:organicdump_proto.RegisterRpi.name)
 }
 
-// required string location = 3;
-inline bool RegisterClient::_internal_has_location() const {
+// required string location = 2;
+inline bool RegisterRpi::_internal_has_location() const {
   bool value = (_has_bits_[0] & 0x00000002u) != 0;
   return value;
 }
-inline bool RegisterClient::has_location() const {
+inline bool RegisterRpi::has_location() const {
   return _internal_has_location();
 }
-inline void RegisterClient::clear_location() {
+inline void RegisterRpi::clear_location() {
   location_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   _has_bits_[0] &= ~0x00000002u;
 }
-inline const std::string& RegisterClient::location() const {
-  // @@protoc_insertion_point(field_get:organicdump_proto.RegisterClient.location)
+inline const std::string& RegisterRpi::location() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.RegisterRpi.location)
   return _internal_location();
 }
-inline void RegisterClient::set_location(const std::string& value) {
+inline void RegisterRpi::set_location(const std::string& value) {
   _internal_set_location(value);
-  // @@protoc_insertion_point(field_set:organicdump_proto.RegisterClient.location)
+  // @@protoc_insertion_point(field_set:organicdump_proto.RegisterRpi.location)
 }
-inline std::string* RegisterClient::mutable_location() {
-  // @@protoc_insertion_point(field_mutable:organicdump_proto.RegisterClient.location)
+inline std::string* RegisterRpi::mutable_location() {
+  // @@protoc_insertion_point(field_mutable:organicdump_proto.RegisterRpi.location)
   return _internal_mutable_location();
 }
-inline const std::string& RegisterClient::_internal_location() const {
+inline const std::string& RegisterRpi::_internal_location() const {
   return location_.GetNoArena();
 }
-inline void RegisterClient::_internal_set_location(const std::string& value) {
+inline void RegisterRpi::_internal_set_location(const std::string& value) {
   _has_bits_[0] |= 0x00000002u;
   location_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
 }
-inline void RegisterClient::set_location(std::string&& value) {
+inline void RegisterRpi::set_location(std::string&& value) {
   _has_bits_[0] |= 0x00000002u;
   location_.SetNoArena(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:organicdump_proto.RegisterClient.location)
+  // @@protoc_insertion_point(field_set_rvalue:organicdump_proto.RegisterRpi.location)
 }
-inline void RegisterClient::set_location(const char* value) {
+inline void RegisterRpi::set_location(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   _has_bits_[0] |= 0x00000002u;
   location_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:organicdump_proto.RegisterClient.location)
+  // @@protoc_insertion_point(field_set_char:organicdump_proto.RegisterRpi.location)
 }
-inline void RegisterClient::set_location(const char* value, size_t size) {
+inline void RegisterRpi::set_location(const char* value, size_t size) {
   _has_bits_[0] |= 0x00000002u;
   location_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:organicdump_proto.RegisterClient.location)
+  // @@protoc_insertion_point(field_set_pointer:organicdump_proto.RegisterRpi.location)
 }
-inline std::string* RegisterClient::_internal_mutable_location() {
+inline std::string* RegisterRpi::_internal_mutable_location() {
   _has_bits_[0] |= 0x00000002u;
   return location_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline std::string* RegisterClient::release_location() {
-  // @@protoc_insertion_point(field_release:organicdump_proto.RegisterClient.location)
+inline std::string* RegisterRpi::release_location() {
+  // @@protoc_insertion_point(field_release:organicdump_proto.RegisterRpi.location)
   if (!has_location()) {
     return nullptr;
   }
   _has_bits_[0] &= ~0x00000002u;
   return location_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline void RegisterClient::set_allocated_location(std::string* location) {
+inline void RegisterRpi::set_allocated_location(std::string* location) {
   if (location != nullptr) {
     _has_bits_[0] |= 0x00000002u;
   } else {
     _has_bits_[0] &= ~0x00000002u;
   }
   location_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), location);
-  // @@protoc_insertion_point(field_set_allocated:organicdump_proto.RegisterClient.location)
+  // @@protoc_insertion_point(field_set_allocated:organicdump_proto.RegisterRpi.location)
 }
 
 // -------------------------------------------------------------------
@@ -1991,7 +2107,7 @@ inline void PeripheralMeta::set_allocated_location(std::string* location) {
   // @@protoc_insertion_point(field_set_allocated:organicdump_proto.PeripheralMeta.location)
 }
 
-// required int32 rpi_id = 3;
+// optional int32 rpi_id = 3;
 inline bool PeripheralMeta::_internal_has_rpi_id() const {
   bool value = (_has_bits_[0] & 0x00000004u) != 0;
   return value;
@@ -2227,9 +2343,71 @@ inline void UpdatePeripheralOwnership::set_orphan_peripheral(bool value) {
   // @@protoc_insertion_point(field_set:organicdump_proto.UpdatePeripheralOwnership.orphan_peripheral)
 }
 
+// -------------------------------------------------------------------
+
+// SendSoilMoistureMeasurement
+
+// required int32 sensor_id = 1;
+inline bool SendSoilMoistureMeasurement::_internal_has_sensor_id() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool SendSoilMoistureMeasurement::has_sensor_id() const {
+  return _internal_has_sensor_id();
+}
+inline void SendSoilMoistureMeasurement::clear_sensor_id() {
+  sensor_id_ = 0;
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SendSoilMoistureMeasurement::_internal_sensor_id() const {
+  return sensor_id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SendSoilMoistureMeasurement::sensor_id() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.SendSoilMoistureMeasurement.sensor_id)
+  return _internal_sensor_id();
+}
+inline void SendSoilMoistureMeasurement::_internal_set_sensor_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000001u;
+  sensor_id_ = value;
+}
+inline void SendSoilMoistureMeasurement::set_sensor_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_sensor_id(value);
+  // @@protoc_insertion_point(field_set:organicdump_proto.SendSoilMoistureMeasurement.sensor_id)
+}
+
+// required float value = 2;
+inline bool SendSoilMoistureMeasurement::_internal_has_value() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool SendSoilMoistureMeasurement::has_value() const {
+  return _internal_has_value();
+}
+inline void SendSoilMoistureMeasurement::clear_value() {
+  value_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline float SendSoilMoistureMeasurement::_internal_value() const {
+  return value_;
+}
+inline float SendSoilMoistureMeasurement::value() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.SendSoilMoistureMeasurement.value)
+  return _internal_value();
+}
+inline void SendSoilMoistureMeasurement::_internal_set_value(float value) {
+  _has_bits_[0] |= 0x00000002u;
+  value_ = value;
+}
+inline void SendSoilMoistureMeasurement::set_value(float value) {
+  _internal_set_value(value);
+  // @@protoc_insertion_point(field_set:organicdump_proto.SendSoilMoistureMeasurement.value)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -28,10 +28,10 @@ class BasicResponseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<BasicResponse> _instance;
 } _BasicResponse_default_instance_;
-class RegisterClientDefaultTypeInternal {
+class RegisterRpiDefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RegisterClient> _instance;
-} _RegisterClient_default_instance_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RegisterRpi> _instance;
+} _RegisterRpi_default_instance_;
 class PeripheralMetaDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PeripheralMeta> _instance;
@@ -44,6 +44,10 @@ class UpdatePeripheralOwnershipDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UpdatePeripheralOwnership> _instance;
 } _UpdatePeripheralOwnership_default_instance_;
+class SendSoilMoistureMeasurementDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SendSoilMoistureMeasurement> _instance;
+} _SendSoilMoistureMeasurement_default_instance_;
 }  // namespace organicdump_proto
 static void InitDefaultsscc_info_BasicResponse_organic_5fdump_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -101,19 +105,19 @@ static void InitDefaultsscc_info_PeripheralMeta_organic_5fdump_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PeripheralMeta_organic_5fdump_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_PeripheralMeta_organic_5fdump_2eproto}, {}};
 
-static void InitDefaultsscc_info_RegisterClient_organic_5fdump_2eproto() {
+static void InitDefaultsscc_info_RegisterRpi_organic_5fdump_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::organicdump_proto::_RegisterClient_default_instance_;
-    new (ptr) ::organicdump_proto::RegisterClient();
+    void* ptr = &::organicdump_proto::_RegisterRpi_default_instance_;
+    new (ptr) ::organicdump_proto::RegisterRpi();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::organicdump_proto::RegisterClient::InitAsDefaultInstance();
+  ::organicdump_proto::RegisterRpi::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RegisterClient_organic_5fdump_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RegisterClient_organic_5fdump_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RegisterRpi_organic_5fdump_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RegisterRpi_organic_5fdump_2eproto}, {}};
 
 static void InitDefaultsscc_info_RegisterSoilMoistureSensor_organic_5fdump_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -130,6 +134,20 @@ static void InitDefaultsscc_info_RegisterSoilMoistureSensor_organic_5fdump_2epro
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_RegisterSoilMoistureSensor_organic_5fdump_2eproto}, {
       &scc_info_PeripheralMeta_organic_5fdump_2eproto.base,}};
 
+static void InitDefaultsscc_info_SendSoilMoistureMeasurement_organic_5fdump_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::organicdump_proto::_SendSoilMoistureMeasurement_default_instance_;
+    new (ptr) ::organicdump_proto::SendSoilMoistureMeasurement();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::organicdump_proto::SendSoilMoistureMeasurement::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SendSoilMoistureMeasurement_organic_5fdump_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_SendSoilMoistureMeasurement_organic_5fdump_2eproto}, {}};
+
 static void InitDefaultsscc_info_UpdatePeripheralOwnership_organic_5fdump_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -144,7 +162,7 @@ static void InitDefaultsscc_info_UpdatePeripheralOwnership_organic_5fdump_2eprot
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UpdatePeripheralOwnership_organic_5fdump_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_UpdatePeripheralOwnership_organic_5fdump_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_organic_5fdump_2eproto[7];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_organic_5fdump_2eproto[8];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_organic_5fdump_2eproto[4];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_organic_5fdump_2eproto = nullptr;
 
@@ -176,15 +194,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_organic_5fdump_2eproto::offset
   1,
   0,
   2,
-  PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterClient, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterClient, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterRpi, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterRpi, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterClient, type_),
-  PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterClient, client_name_),
-  PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterClient, location_),
-  2,
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterRpi, name_),
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::RegisterRpi, location_),
   0,
   1,
   PROTOBUF_FIELD_OFFSET(::organicdump_proto::PeripheralMeta, _has_bits_),
@@ -220,73 +236,85 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_organic_5fdump_2eproto::offset
   0,
   1,
   2,
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::SendSoilMoistureMeasurement, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::SendSoilMoistureMeasurement, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::SendSoilMoistureMeasurement, sensor_id_),
+  PROTOBUF_FIELD_OFFSET(::organicdump_proto::SendSoilMoistureMeasurement, value_),
+  0,
+  1,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 6, sizeof(::organicdump_proto::Echo)},
   { 7, 14, sizeof(::organicdump_proto::Hello)},
   { 16, 24, sizeof(::organicdump_proto::BasicResponse)},
-  { 27, 35, sizeof(::organicdump_proto::RegisterClient)},
-  { 38, 46, sizeof(::organicdump_proto::PeripheralMeta)},
-  { 49, 57, sizeof(::organicdump_proto::RegisterSoilMoistureSensor)},
-  { 60, 68, sizeof(::organicdump_proto::UpdatePeripheralOwnership)},
+  { 27, 34, sizeof(::organicdump_proto::RegisterRpi)},
+  { 36, 44, sizeof(::organicdump_proto::PeripheralMeta)},
+  { 47, 55, sizeof(::organicdump_proto::RegisterSoilMoistureSensor)},
+  { 58, 66, sizeof(::organicdump_proto::UpdatePeripheralOwnership)},
+  { 69, 76, sizeof(::organicdump_proto::SendSoilMoistureMeasurement)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_Echo_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_Hello_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_BasicResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_RegisterClient_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_RegisterRpi_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_PeripheralMeta_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_RegisterSoilMoistureSensor_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_UpdatePeripheralOwnership_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::organicdump_proto::_SendSoilMoistureMeasurement_default_instance_),
 };
 
 const char descriptor_table_protodef_organic_5fdump_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\022organic_dump.proto\022\021organicdump_proto\""
   "\027\n\004Echo\022\017\n\007message\030\001 \002(\t\"G\n\005Hello\022+\n\004typ"
   "e\030\001 \002(\0162\035.organicdump_proto.ClientType\022\021"
-  "\n\tclient_id\030\002 \002(\005\"X\n\rBasicResponse\022*\n\004co"
+  "\n\tclient_id\030\002 \001(\005\"X\n\rBasicResponse\022*\n\004co"
   "de\030\001 \002(\0162\034.organicdump_proto.ErrorCode\022\017"
-  "\n\007message\030\002 \001(\t\022\n\n\002id\030\003 \001(\005\"d\n\016RegisterC"
-  "lient\022+\n\004type\030\001 \002(\0162\035.organicdump_proto."
-  "ClientType\022\023\n\013client_name\030\002 \002(\t\022\020\n\010locat"
-  "ion\030\003 \002(\t\"@\n\016PeripheralMeta\022\014\n\004name\030\001 \002("
-  "\t\022\020\n\010location\030\002 \002(\t\022\016\n\006rpi_id\030\003 \002(\005\"j\n\032R"
-  "egisterSoilMoistureSensor\022/\n\004meta\030\001 \002(\0132"
-  "!.organicdump_proto.PeripheralMeta\022\r\n\005fl"
-  "oor\030\002 \002(\001\022\014\n\004ceil\030\003 \002(\001\"]\n\031UpdatePeriphe"
-  "ralOwnership\022\025\n\rperipheral_id\030\001 \002(\005\022\016\n\006r"
-  "pi_id\030\002 \002(\005\022\031\n\021orphan_peripheral\030\003 \002(\010*\251"
-  "\001\n\013MessageType\022\017\n\013SERVER_ECHO\020\000\022\t\n\005HELLO"
-  "\020\001\022\023\n\017REGISTER_CLIENT\020\002\022!\n\035REGISTER_SOIL"
-  "_MOISTURE_SENSOR\020\003\022\037\n\033UPDATE_PERIPHERAL_"
-  "OWNERSHIP\020\004\022\020\n\013CLIENT_ECHO\020\200\001\022\023\n\016BASIC_R"
-  "ESPONSE\020\201\001*<\n\nClientType\022\024\n\020UNDIFFERENTI"
-  "ATED\020\000\022\013\n\007CONTROL\020\001\022\013\n\007RPI_POT\020\002*u\n\016Peri"
-  "pheralType\022\030\n\024SOIL_MOISTURE_SENSOR\020\000\022\021\n\r"
-  "CAMERA_SENSOR\020\001\022\016\n\nLUX_SENSOR\020\002\022\016\n\nPIR_S"
-  "ENSOR\020\003\022\026\n\022TEMPERATURE_SENSOR\020\004*<\n\tError"
-  "Code\022\006\n\002OK\020\000\022\020\n\014UNAUTHOROZED\020\001\022\025\n\021INVALI"
-  "D_PARAMETER\020\002"
+  "\n\007message\030\002 \001(\t\022\n\n\002id\030\003 \001(\005\"-\n\013RegisterR"
+  "pi\022\014\n\004name\030\001 \002(\t\022\020\n\010location\030\002 \002(\t\"@\n\016Pe"
+  "ripheralMeta\022\014\n\004name\030\001 \002(\t\022\020\n\010location\030\002"
+  " \002(\t\022\016\n\006rpi_id\030\003 \001(\005\"j\n\032RegisterSoilMois"
+  "tureSensor\022/\n\004meta\030\001 \002(\0132!.organicdump_p"
+  "roto.PeripheralMeta\022\r\n\005floor\030\002 \002(\001\022\014\n\004ce"
+  "il\030\003 \002(\001\"]\n\031UpdatePeripheralOwnership\022\025\n"
+  "\rperipheral_id\030\001 \002(\005\022\016\n\006rpi_id\030\002 \002(\005\022\031\n\021"
+  "orphan_peripheral\030\003 \002(\010\"\?\n\033SendSoilMoist"
+  "ureMeasurement\022\021\n\tsensor_id\030\001 \002(\005\022\r\n\005val"
+  "ue\030\002 \002(\002*\246\001\n\013MessageType\022\017\n\013SERVER_ECHO\020"
+  "\000\022\t\n\005HELLO\020\001\022\020\n\014REGISTER_RPI\020\002\022!\n\035REGIST"
+  "ER_SOIL_MOISTURE_SENSOR\020\003\022\037\n\033UPDATE_PERI"
+  "PHERAL_OWNERSHIP\020\004\022\020\n\013CLIENT_ECHO\020\200\001\022\023\n\016"
+  "BASIC_RESPONSE\020\201\001*3\n\nClientType\022\013\n\007UNKNO"
+  "WN\020\000\022\013\n\007CONTROL\020\001\022\013\n\007RPI_POT\020\002*u\n\016Periph"
+  "eralType\022\030\n\024SOIL_MOISTURE_SENSOR\020\000\022\021\n\rCA"
+  "MERA_SENSOR\020\001\022\016\n\nLUX_SENSOR\020\002\022\016\n\nPIR_SEN"
+  "SOR\020\003\022\026\n\022TEMPERATURE_SENSOR\020\004*W\n\tErrorCo"
+  "de\022\006\n\002OK\020\000\022\020\n\014UNAUTHOROZED\020\001\022\025\n\021INVALID_"
+  "PARAMETER\020\002\022\031\n\025INTERNAL_SERVER_ERROR\020\003"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_organic_5fdump_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_organic_5fdump_2eproto_sccs[7] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_organic_5fdump_2eproto_sccs[8] = {
   &scc_info_BasicResponse_organic_5fdump_2eproto.base,
   &scc_info_Echo_organic_5fdump_2eproto.base,
   &scc_info_Hello_organic_5fdump_2eproto.base,
   &scc_info_PeripheralMeta_organic_5fdump_2eproto.base,
-  &scc_info_RegisterClient_organic_5fdump_2eproto.base,
+  &scc_info_RegisterRpi_organic_5fdump_2eproto.base,
   &scc_info_RegisterSoilMoistureSensor_organic_5fdump_2eproto.base,
+  &scc_info_SendSoilMoistureMeasurement_organic_5fdump_2eproto.base,
   &scc_info_UpdatePeripheralOwnership_organic_5fdump_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_organic_5fdump_2eproto_once;
 static bool descriptor_table_organic_5fdump_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_organic_5fdump_2eproto = {
-  &descriptor_table_organic_5fdump_2eproto_initialized, descriptor_table_protodef_organic_5fdump_2eproto, "organic_dump.proto", 1013,
-  &descriptor_table_organic_5fdump_2eproto_once, descriptor_table_organic_5fdump_2eproto_sccs, descriptor_table_organic_5fdump_2eproto_deps, 7, 0,
+  &descriptor_table_organic_5fdump_2eproto_initialized, descriptor_table_protodef_organic_5fdump_2eproto, "organic_dump.proto", 1038,
+  &descriptor_table_organic_5fdump_2eproto_once, descriptor_table_organic_5fdump_2eproto_sccs, descriptor_table_organic_5fdump_2eproto_deps, 8, 0,
   schemas, file_default_instances, TableStruct_organic_5fdump_2eproto::offsets,
-  file_level_metadata_organic_5fdump_2eproto, 7, file_level_enum_descriptors_organic_5fdump_2eproto, file_level_service_descriptors_organic_5fdump_2eproto,
+  file_level_metadata_organic_5fdump_2eproto, 8, file_level_enum_descriptors_organic_5fdump_2eproto, file_level_service_descriptors_organic_5fdump_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -352,6 +380,7 @@ bool ErrorCode_IsValid(int value) {
     case 0:
     case 1:
     case 2:
+    case 3:
       return true;
     default:
       return false;
@@ -659,7 +688,7 @@ const char* Hello::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
           }
         } else goto handle_unusual;
         continue;
-      // required int32 client_id = 2;
+      // optional int32 client_id = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           _Internal::set_has_client_id(&has_bits);
@@ -702,7 +731,7 @@ failure:
       1, this->_internal_type(), target);
   }
 
-  // required int32 client_id = 2;
+  // optional int32 client_id = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_client_id(), target);
@@ -716,45 +745,26 @@ failure:
   return target;
 }
 
-size_t Hello::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:organicdump_proto.Hello)
-  size_t total_size = 0;
-
-  if (has_type()) {
-    // required .organicdump_proto.ClientType type = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_type());
-  }
-
-  if (has_client_id()) {
-    // required int32 client_id = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_client_id());
-  }
-
-  return total_size;
-}
 size_t Hello::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:organicdump_proto.Hello)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
-    // required .organicdump_proto.ClientType type = 1;
+  // required .organicdump_proto.ClientType type = 1;
+  if (has_type()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_type());
-
-    // required int32 client_id = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_client_id());
-
-  } else {
-    total_size += RequiredFieldsByteSizeFallback();
   }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // optional int32 client_id = 2;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000002u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_client_id());
+  }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
@@ -814,7 +824,7 @@ void Hello::CopyFrom(const Hello& from) {
 }
 
 bool Hello::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
   return true;
 }
 
@@ -1119,15 +1129,12 @@ void BasicResponse::InternalSwap(BasicResponse* other) {
 
 // ===================================================================
 
-void RegisterClient::InitAsDefaultInstance() {
+void RegisterRpi::InitAsDefaultInstance() {
 }
-class RegisterClient::_Internal {
+class RegisterRpi::_Internal {
  public:
-  using HasBits = decltype(std::declval<RegisterClient>()._has_bits_);
-  static void set_has_type(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
-  }
-  static void set_has_client_name(HasBits* has_bits) {
+  using HasBits = decltype(std::declval<RegisterRpi>()._has_bits_);
+  static void set_has_name(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
   static void set_has_location(HasBits* has_bits) {
@@ -1135,56 +1142,54 @@ class RegisterClient::_Internal {
   }
 };
 
-RegisterClient::RegisterClient()
+RegisterRpi::RegisterRpi()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:organicdump_proto.RegisterClient)
+  // @@protoc_insertion_point(constructor:organicdump_proto.RegisterRpi)
 }
-RegisterClient::RegisterClient(const RegisterClient& from)
+RegisterRpi::RegisterRpi(const RegisterRpi& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  client_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from._internal_has_client_name()) {
-    client_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.client_name_);
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_name()) {
+    name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   location_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_location()) {
     location_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.location_);
   }
-  type_ = from.type_;
-  // @@protoc_insertion_point(copy_constructor:organicdump_proto.RegisterClient)
+  // @@protoc_insertion_point(copy_constructor:organicdump_proto.RegisterRpi)
 }
 
-void RegisterClient::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RegisterClient_organic_5fdump_2eproto.base);
-  client_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+void RegisterRpi::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RegisterRpi_organic_5fdump_2eproto.base);
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   location_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  type_ = 0;
 }
 
-RegisterClient::~RegisterClient() {
-  // @@protoc_insertion_point(destructor:organicdump_proto.RegisterClient)
+RegisterRpi::~RegisterRpi() {
+  // @@protoc_insertion_point(destructor:organicdump_proto.RegisterRpi)
   SharedDtor();
 }
 
-void RegisterClient::SharedDtor() {
-  client_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+void RegisterRpi::SharedDtor() {
+  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   location_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void RegisterClient::SetCachedSize(int size) const {
+void RegisterRpi::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const RegisterClient& RegisterClient::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RegisterClient_organic_5fdump_2eproto.base);
+const RegisterRpi& RegisterRpi::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RegisterRpi_organic_5fdump_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void RegisterClient::Clear() {
-// @@protoc_insertion_point(message_clear_start:organicdump_proto.RegisterClient)
+void RegisterRpi::Clear() {
+// @@protoc_insertion_point(message_clear_start:organicdump_proto.RegisterRpi)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1192,18 +1197,17 @@ void RegisterClient::Clear() {
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      client_name_.ClearNonDefaultToEmptyNoArena();
+      name_.ClearNonDefaultToEmptyNoArena();
     }
     if (cached_has_bits & 0x00000002u) {
       location_.ClearNonDefaultToEmptyNoArena();
     }
   }
-  type_ = 0;
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
-const char* RegisterClient::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* RegisterRpi::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
@@ -1211,29 +1215,17 @@ const char* RegisterClient::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // required .organicdump_proto.ClientType type = 1;
+      // required string name = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_name(), ptr, ctx, "organicdump_proto.RegisterRpi.name");
           CHK_(ptr);
-          if (PROTOBUF_PREDICT_TRUE(::organicdump_proto::ClientType_IsValid(val))) {
-            _internal_set_type(static_cast<::organicdump_proto::ClientType>(val));
-          } else {
-            ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(1, val, mutable_unknown_fields());
-          }
         } else goto handle_unusual;
         continue;
-      // required string client_name = 2;
+      // required string location = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_client_name(), ptr, ctx, "organicdump_proto.RegisterClient.client_name");
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // required string location = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_location(), ptr, ctx, "organicdump_proto.RegisterClient.location");
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_location(), ptr, ctx, "organicdump_proto.RegisterRpi.location");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1258,92 +1250,75 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* RegisterClient::InternalSerializeWithCachedSizesToArray(
+::PROTOBUF_NAMESPACE_ID::uint8* RegisterRpi::InternalSerializeWithCachedSizesToArray(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:organicdump_proto.RegisterClient)
+  // @@protoc_insertion_point(serialize_to_array_start:organicdump_proto.RegisterRpi)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // required .organicdump_proto.ClientType type = 1;
-  if (cached_has_bits & 0x00000004u) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
-      1, this->_internal_type(), target);
-  }
-
-  // required string client_name = 2;
+  // required string name = 1;
   if (cached_has_bits & 0x00000001u) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->_internal_client_name().data(), static_cast<int>(this->_internal_client_name().length()),
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "organicdump_proto.RegisterClient.client_name");
+      "organicdump_proto.RegisterRpi.name");
     target = stream->WriteStringMaybeAliased(
-        2, this->_internal_client_name(), target);
+        1, this->_internal_name(), target);
   }
 
-  // required string location = 3;
+  // required string location = 2;
   if (cached_has_bits & 0x00000002u) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_location().data(), static_cast<int>(this->_internal_location().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "organicdump_proto.RegisterClient.location");
+      "organicdump_proto.RegisterRpi.location");
     target = stream->WriteStringMaybeAliased(
-        3, this->_internal_location(), target);
+        2, this->_internal_location(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:organicdump_proto.RegisterClient)
+  // @@protoc_insertion_point(serialize_to_array_end:organicdump_proto.RegisterRpi)
   return target;
 }
 
-size_t RegisterClient::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:organicdump_proto.RegisterClient)
+size_t RegisterRpi::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:organicdump_proto.RegisterRpi)
   size_t total_size = 0;
 
-  if (has_client_name()) {
-    // required string client_name = 2;
+  if (has_name()) {
+    // required string name = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_client_name());
+        this->_internal_name());
   }
 
   if (has_location()) {
-    // required string location = 3;
+    // required string location = 2;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_location());
-  }
-
-  if (has_type()) {
-    // required .organicdump_proto.ClientType type = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_type());
   }
 
   return total_size;
 }
-size_t RegisterClient::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:organicdump_proto.RegisterClient)
+size_t RegisterRpi::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:organicdump_proto.RegisterRpi)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
-    // required string client_name = 2;
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required string name = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_client_name());
+        this->_internal_name());
 
-    // required string location = 3;
+    // required string location = 2;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_location());
-
-    // required .organicdump_proto.ClientType type = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_type());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -1361,76 +1336,71 @@ size_t RegisterClient::ByteSizeLong() const {
   return total_size;
 }
 
-void RegisterClient::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:organicdump_proto.RegisterClient)
+void RegisterRpi::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:organicdump_proto.RegisterRpi)
   GOOGLE_DCHECK_NE(&from, this);
-  const RegisterClient* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RegisterClient>(
+  const RegisterRpi* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RegisterRpi>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:organicdump_proto.RegisterClient)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:organicdump_proto.RegisterRpi)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:organicdump_proto.RegisterClient)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:organicdump_proto.RegisterRpi)
     MergeFrom(*source);
   }
 }
 
-void RegisterClient::MergeFrom(const RegisterClient& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:organicdump_proto.RegisterClient)
+void RegisterRpi::MergeFrom(const RegisterRpi& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:organicdump_proto.RegisterRpi)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
       _has_bits_[0] |= 0x00000001u;
-      client_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.client_name_);
+      name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
     }
     if (cached_has_bits & 0x00000002u) {
       _has_bits_[0] |= 0x00000002u;
       location_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.location_);
     }
-    if (cached_has_bits & 0x00000004u) {
-      type_ = from.type_;
-    }
-    _has_bits_[0] |= cached_has_bits;
   }
 }
 
-void RegisterClient::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:organicdump_proto.RegisterClient)
+void RegisterRpi::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:organicdump_proto.RegisterRpi)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void RegisterClient::CopyFrom(const RegisterClient& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:organicdump_proto.RegisterClient)
+void RegisterRpi::CopyFrom(const RegisterRpi& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:organicdump_proto.RegisterRpi)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool RegisterClient::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+bool RegisterRpi::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   return true;
 }
 
-void RegisterClient::InternalSwap(RegisterClient* other) {
+void RegisterRpi::InternalSwap(RegisterRpi* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  client_name_.Swap(&other->client_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   location_.Swap(&other->location_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  swap(type_, other->type_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata RegisterClient::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RegisterRpi::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -1543,7 +1513,7 @@ const char* PeripheralMeta::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // required int32 rpi_id = 3;
+      // optional int32 rpi_id = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
           _Internal::set_has_rpi_id(&has_bits);
@@ -1599,7 +1569,7 @@ failure:
         2, this->_internal_location(), target);
   }
 
-  // required int32 rpi_id = 3;
+  // optional int32 rpi_id = 3;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_rpi_id(), target);
@@ -1631,20 +1601,13 @@ size_t PeripheralMeta::RequiredFieldsByteSizeFallback() const {
         this->_internal_location());
   }
 
-  if (has_rpi_id()) {
-    // required int32 rpi_id = 3;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_rpi_id());
-  }
-
   return total_size;
 }
 size_t PeripheralMeta::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:organicdump_proto.PeripheralMeta)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required string name = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -1655,17 +1618,20 @@ size_t PeripheralMeta::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_location());
 
-    // required int32 rpi_id = 3;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_rpi_id());
-
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // optional int32 rpi_id = 3;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000004u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_rpi_id());
+  }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
@@ -1730,7 +1696,7 @@ void PeripheralMeta::CopyFrom(const PeripheralMeta& from) {
 }
 
 bool PeripheralMeta::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   return true;
 }
 
@@ -2344,6 +2310,261 @@ void UpdatePeripheralOwnership::InternalSwap(UpdatePeripheralOwnership* other) {
 }
 
 
+// ===================================================================
+
+void SendSoilMoistureMeasurement::InitAsDefaultInstance() {
+}
+class SendSoilMoistureMeasurement::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SendSoilMoistureMeasurement>()._has_bits_);
+  static void set_has_sensor_id(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_value(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+};
+
+SendSoilMoistureMeasurement::SendSoilMoistureMeasurement()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:organicdump_proto.SendSoilMoistureMeasurement)
+}
+SendSoilMoistureMeasurement::SendSoilMoistureMeasurement(const SendSoilMoistureMeasurement& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&sensor_id_, &from.sensor_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&value_) -
+    reinterpret_cast<char*>(&sensor_id_)) + sizeof(value_));
+  // @@protoc_insertion_point(copy_constructor:organicdump_proto.SendSoilMoistureMeasurement)
+}
+
+void SendSoilMoistureMeasurement::SharedCtor() {
+  ::memset(&sensor_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&value_) -
+      reinterpret_cast<char*>(&sensor_id_)) + sizeof(value_));
+}
+
+SendSoilMoistureMeasurement::~SendSoilMoistureMeasurement() {
+  // @@protoc_insertion_point(destructor:organicdump_proto.SendSoilMoistureMeasurement)
+  SharedDtor();
+}
+
+void SendSoilMoistureMeasurement::SharedDtor() {
+}
+
+void SendSoilMoistureMeasurement::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const SendSoilMoistureMeasurement& SendSoilMoistureMeasurement::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SendSoilMoistureMeasurement_organic_5fdump_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void SendSoilMoistureMeasurement::Clear() {
+// @@protoc_insertion_point(message_clear_start:organicdump_proto.SendSoilMoistureMeasurement)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    ::memset(&sensor_id_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&value_) -
+        reinterpret_cast<char*>(&sensor_id_)) + sizeof(value_));
+  }
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+const char* SendSoilMoistureMeasurement::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // required int32 sensor_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          _Internal::set_has_sensor_id(&has_bits);
+          sensor_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // required float value = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
+          _Internal::set_has_value(&has_bits);
+          value_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* SendSoilMoistureMeasurement::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:organicdump_proto.SendSoilMoistureMeasurement)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required int32 sensor_id = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_sensor_id(), target);
+  }
+
+  // required float value = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_value(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:organicdump_proto.SendSoilMoistureMeasurement)
+  return target;
+}
+
+size_t SendSoilMoistureMeasurement::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:organicdump_proto.SendSoilMoistureMeasurement)
+  size_t total_size = 0;
+
+  if (has_sensor_id()) {
+    // required int32 sensor_id = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_sensor_id());
+  }
+
+  if (has_value()) {
+    // required float value = 2;
+    total_size += 1 + 4;
+  }
+
+  return total_size;
+}
+size_t SendSoilMoistureMeasurement::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:organicdump_proto.SendSoilMoistureMeasurement)
+  size_t total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required int32 sensor_id = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_sensor_id());
+
+    // required float value = 2;
+    total_size += 1 + 4;
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void SendSoilMoistureMeasurement::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:organicdump_proto.SendSoilMoistureMeasurement)
+  GOOGLE_DCHECK_NE(&from, this);
+  const SendSoilMoistureMeasurement* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SendSoilMoistureMeasurement>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:organicdump_proto.SendSoilMoistureMeasurement)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:organicdump_proto.SendSoilMoistureMeasurement)
+    MergeFrom(*source);
+  }
+}
+
+void SendSoilMoistureMeasurement::MergeFrom(const SendSoilMoistureMeasurement& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:organicdump_proto.SendSoilMoistureMeasurement)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      sensor_id_ = from.sensor_id_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      value_ = from.value_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+}
+
+void SendSoilMoistureMeasurement::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:organicdump_proto.SendSoilMoistureMeasurement)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SendSoilMoistureMeasurement::CopyFrom(const SendSoilMoistureMeasurement& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:organicdump_proto.SendSoilMoistureMeasurement)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SendSoilMoistureMeasurement::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  return true;
+}
+
+void SendSoilMoistureMeasurement::InternalSwap(SendSoilMoistureMeasurement* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(sensor_id_, other->sensor_id_);
+  swap(value_, other->value_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SendSoilMoistureMeasurement::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace organicdump_proto
 PROTOBUF_NAMESPACE_OPEN
@@ -2356,8 +2577,8 @@ template<> PROTOBUF_NOINLINE ::organicdump_proto::Hello* Arena::CreateMaybeMessa
 template<> PROTOBUF_NOINLINE ::organicdump_proto::BasicResponse* Arena::CreateMaybeMessage< ::organicdump_proto::BasicResponse >(Arena* arena) {
   return Arena::CreateInternal< ::organicdump_proto::BasicResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::organicdump_proto::RegisterClient* Arena::CreateMaybeMessage< ::organicdump_proto::RegisterClient >(Arena* arena) {
-  return Arena::CreateInternal< ::organicdump_proto::RegisterClient >(arena);
+template<> PROTOBUF_NOINLINE ::organicdump_proto::RegisterRpi* Arena::CreateMaybeMessage< ::organicdump_proto::RegisterRpi >(Arena* arena) {
+  return Arena::CreateInternal< ::organicdump_proto::RegisterRpi >(arena);
 }
 template<> PROTOBUF_NOINLINE ::organicdump_proto::PeripheralMeta* Arena::CreateMaybeMessage< ::organicdump_proto::PeripheralMeta >(Arena* arena) {
   return Arena::CreateInternal< ::organicdump_proto::PeripheralMeta >(arena);
@@ -2367,6 +2588,9 @@ template<> PROTOBUF_NOINLINE ::organicdump_proto::RegisterSoilMoistureSensor* Ar
 }
 template<> PROTOBUF_NOINLINE ::organicdump_proto::UpdatePeripheralOwnership* Arena::CreateMaybeMessage< ::organicdump_proto::UpdatePeripheralOwnership >(Arena* arena) {
   return Arena::CreateInternal< ::organicdump_proto::UpdatePeripheralOwnership >(arena);
+}
+template<> PROTOBUF_NOINLINE ::organicdump_proto::SendSoilMoistureMeasurement* Arena::CreateMaybeMessage< ::organicdump_proto::SendSoilMoistureMeasurement >(Arena* arena) {
+  return Arena::CreateInternal< ::organicdump_proto::SendSoilMoistureMeasurement >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

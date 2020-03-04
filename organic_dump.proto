@@ -7,7 +7,7 @@ enum MessageType
   // Client -> Server (0-127)
   SERVER_ECHO = 0;
   HELLO = 1;
-  REGISTER_CLIENT = 2;
+  REGISTER_RPI = 2;
   REGISTER_SOIL_MOISTURE_SENSOR = 3;
   UPDATE_PERIPHERAL_OWNERSHIP = 4;
 
@@ -18,7 +18,7 @@ enum MessageType
 
 enum ClientType
 {
-  UNDIFFERENTIATED = 0;
+  UNKNOWN = 0;
   CONTROL = 1;
   RPI_POT = 2;
 }
@@ -40,7 +40,7 @@ message Echo
 message Hello
 {
   required ClientType type = 1;
-  required int32 client_id = 2;
+  optional int32 client_id = 2;
 }
 
 enum ErrorCode
@@ -48,6 +48,7 @@ enum ErrorCode
   OK = 0;
   UNAUTHOROZED = 1;
   INVALID_PARAMETER = 2;
+  INTERNAL_SERVER_ERROR = 3;
 }
 
 message BasicResponse
@@ -57,11 +58,10 @@ message BasicResponse
   optional int32 id = 3;
 }
 
-message RegisterClient
+message RegisterRpi
 {
-  required ClientType type = 1;
-  required string client_name = 2;
-  required string location = 3;
+  required string name = 1;
+  required string location = 2;
 }
 
 message PeripheralMeta
@@ -83,4 +83,10 @@ message UpdatePeripheralOwnership
   required int32 peripheral_id = 1;
   required int32 rpi_id = 2;
   required bool orphan_peripheral = 3;
+}
+
+message SendSoilMoistureMeasurement
+{
+  required int32 sensor_id = 1;
+  required float value = 2;
 }
