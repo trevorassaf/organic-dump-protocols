@@ -19,6 +19,7 @@
 cmake_minimum_required(VERSION 3.1)
 
 include_directories(../../../external/protobuf/repo/src/google/protbuf
+                    ../../../external/boringssl/repo/include
                     ../../../code/organic-dump-network/repo)
 
 add_library(test_proto SHARED test.pb.cc)

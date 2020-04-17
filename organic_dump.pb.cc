@@ -284,17 +284,18 @@ const char descriptor_table_protodef_organic_5fdump_2eproto[] PROTOBUF_SECTION_V
   "\rperipheral_id\030\001 \002(\005\022\016\n\006rpi_id\030\002 \002(\005\022\031\n\021"
   "orphan_peripheral\030\003 \002(\010\"\?\n\033SendSoilMoist"
   "ureMeasurement\022\021\n\tsensor_id\030\001 \002(\005\022\r\n\005val"
-  "ue\030\002 \002(\002*\246\001\n\013MessageType\022\017\n\013SERVER_ECHO\020"
+  "ue\030\002 \002(\002*\312\001\n\013MessageType\022\017\n\013SERVER_ECHO\020"
   "\000\022\t\n\005HELLO\020\001\022\020\n\014REGISTER_RPI\020\002\022!\n\035REGIST"
   "ER_SOIL_MOISTURE_SENSOR\020\003\022\037\n\033UPDATE_PERI"
-  "PHERAL_OWNERSHIP\020\004\022\020\n\013CLIENT_ECHO\020\200\001\022\023\n\016"
-  "BASIC_RESPONSE\020\201\001*3\n\nClientType\022\013\n\007UNKNO"
-  "WN\020\000\022\013\n\007CONTROL\020\001\022\013\n\007RPI_POT\020\002*u\n\016Periph"
-  "eralType\022\030\n\024SOIL_MOISTURE_SENSOR\020\000\022\021\n\rCA"
-  "MERA_SENSOR\020\001\022\016\n\nLUX_SENSOR\020\002\022\016\n\nPIR_SEN"
-  "SOR\020\003\022\026\n\022TEMPERATURE_SENSOR\020\004*W\n\tErrorCo"
-  "de\022\006\n\002OK\020\000\022\020\n\014UNAUTHOROZED\020\001\022\025\n\021INVALID_"
-  "PARAMETER\020\002\022\031\n\025INTERNAL_SERVER_ERROR\020\003"
+  "PHERAL_OWNERSHIP\020\004\022\"\n\036SEND_SOIL_MOISTURE"
+  "_MEASUREMENT\020\005\022\020\n\013CLIENT_ECHO\020\200\001\022\023\n\016BASI"
+  "C_RESPONSE\020\201\001*3\n\nClientType\022\013\n\007UNKNOWN\020\000"
+  "\022\013\n\007CONTROL\020\001\022\013\n\007RPI_POT\020\002*u\n\016Peripheral"
+  "Type\022\030\n\024SOIL_MOISTURE_SENSOR\020\000\022\021\n\rCAMERA"
+  "_SENSOR\020\001\022\016\n\nLUX_SENSOR\020\002\022\016\n\nPIR_SENSOR\020"
+  "\003\022\026\n\022TEMPERATURE_SENSOR\020\004*W\n\tErrorCode\022\006"
+  "\n\002OK\020\000\022\020\n\014UNAUTHOROZED\020\001\022\025\n\021INVALID_PARA"
+  "METER\020\002\022\031\n\025INTERNAL_SERVER_ERROR\020\003"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_organic_5fdump_2eproto_deps[1] = {
 };
@@ -311,7 +312,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_org
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_organic_5fdump_2eproto_once;
 static bool descriptor_table_organic_5fdump_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_organic_5fdump_2eproto = {
-  &descriptor_table_organic_5fdump_2eproto_initialized, descriptor_table_protodef_organic_5fdump_2eproto, "organic_dump.proto", 1038,
+  &descriptor_table_organic_5fdump_2eproto_initialized, descriptor_table_protodef_organic_5fdump_2eproto, "organic_dump.proto", 1074,
   &descriptor_table_organic_5fdump_2eproto_once, descriptor_table_organic_5fdump_2eproto_sccs, descriptor_table_organic_5fdump_2eproto_deps, 8, 0,
   schemas, file_default_instances, TableStruct_organic_5fdump_2eproto::offsets,
   file_level_metadata_organic_5fdump_2eproto, 8, file_level_enum_descriptors_organic_5fdump_2eproto, file_level_service_descriptors_organic_5fdump_2eproto,
@@ -331,6 +332,7 @@ bool MessageType_IsValid(int value) {
     case 2:
     case 3:
     case 4:
+    case 5:
     case 128:
     case 129:
       return true;

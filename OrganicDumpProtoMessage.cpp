@@ -14,6 +14,7 @@ using organicdump_proto::Hello;
 using organicdump_proto::MessageType;
 using organicdump_proto::RegisterRpi;
 using organicdump_proto::RegisterSoilMoistureSensor;
+using organicdump_proto::SendSoilMoistureMeasurement;
 using organicdump_proto::UpdatePeripheralOwnership;
 
 using network::TlsConnection;
@@ -25,91 +26,69 @@ namespace organicdump
 {
 
 OrganicDumpProtoMessage::OrganicDumpProtoMessage()
-  : OrganicDumpProtoMessage{Hello{}}
-{
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage:ctor() -- none";
-}
+  : OrganicDumpProtoMessage{Hello{}} {}
 
 OrganicDumpProtoMessage::OrganicDumpProtoMessage(Hello msg)
   : type{MessageType::HELLO},
-    hello{std::move(msg)}
-{
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage:ctor() -- hello";
-}
+    hello{std::move(msg)} {}
 
 OrganicDumpProtoMessage::OrganicDumpProtoMessage(RegisterRpi msg)
   : type{MessageType::REGISTER_RPI},
-    register_rpi{std::move(msg)} {
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage:ctor() -- register rpi";
-}
+    register_rpi{std::move(msg)} {}
 
 OrganicDumpProtoMessage::OrganicDumpProtoMessage(RegisterSoilMoistureSensor msg)
   : type{MessageType::REGISTER_SOIL_MOISTURE_SENSOR},
-    register_soil_moisture_sensor{std::move(msg)}
-{ 
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage:ctor() -- register soil moisture sensor";
-}
+    register_soil_moisture_sensor{std::move(msg)} {}
 
 OrganicDumpProtoMessage::OrganicDumpProtoMessage(UpdatePeripheralOwnership msg)
   : type{MessageType::UPDATE_PERIPHERAL_OWNERSHIP},
-    update_peripheral_ownership{std::move(msg)}
-{
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage:ctor() -- update peripheral ownership";
-}
+    update_peripheral_ownership{std::move(msg)} {}
+
+OrganicDumpProtoMessage::OrganicDumpProtoMessage(SendSoilMoistureMeasurement msg)
+  : type{MessageType::SEND_SOIL_MOISTURE_MEASUREMENT},
+    send_soil_moisture_measurement{std::move(msg)} {}
 
 OrganicDumpProtoMessage::OrganicDumpProtoMessage(BasicResponse msg)
   : type{MessageType::BASIC_RESPONSE},
-    basic_response{std::move(msg)}
-{
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage:ctor() -- basic response";
-}
+    basic_response{std::move(msg)} {}
 
 OrganicDumpProtoMessage::OrganicDumpProtoMessage(OrganicDumpProtoMessage &&other) {
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::copy_ctor() -- call";
   StealResources(&other);
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::copy_ctor() -- end";
 }
 
 OrganicDumpProtoMessage &OrganicDumpProtoMessage::operator=(OrganicDumpProtoMessage &&other) {
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::move_equals() -- call";
   if (this != &other)
   {
     CloseResources();
     StealResources(&other);
   }
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::move_equals() -- end";
   return *this;
 }
 
 OrganicDumpProtoMessage::~OrganicDumpProtoMessage() {
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::~OrganicDumpProtoMessage() -- call";
   CloseResources();
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::~OrganicDumpProtoMessage() -- end";
 }
 
 void OrganicDumpProtoMessage::CloseResources()
 {
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::CloseResources() -- call";
   switch (type)
   {
     case MessageType::HELLO:
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::CloseResources() -- hello";
       hello.~Hello();
       break;
     case MessageType::REGISTER_RPI:
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::CloseResources() -- register rpi";
       register_rpi.~RegisterRpi();
       break;
     case MessageType::REGISTER_SOIL_MOISTURE_SENSOR:
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::CloseResources() -- register soil moisture sensor";
       register_soil_moisture_sensor.~RegisterSoilMoistureSensor();
       break;
     case MessageType::UPDATE_PERIPHERAL_OWNERSHIP:
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::CloseResources() -- update peripheral ownership";
       update_peripheral_ownership.~UpdatePeripheralOwnership();
       break;
+    case MessageType::SEND_SOIL_MOISTURE_MEASUREMENT:
+      send_soil_moisture_measurement.~SendSoilMoistureMeasurement();
+      break;
     case MessageType::BASIC_RESPONSE:
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::CloseResources() -- basic response";
       basic_response.~BasicResponse();
       break;
     default:
@@ -117,12 +96,10 @@ void OrganicDumpProtoMessage::CloseResources()
       assert(false);
       break;
   }
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::CloseResources() -- end";
 }
 
 void OrganicDumpProtoMessage::StealResources(OrganicDumpProtoMessage *other)
 {
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::StealResources() -- call";
   assert(other);
 
   // Transfer resource ownership
@@ -146,6 +123,11 @@ void OrganicDumpProtoMessage::StealResources(OrganicDumpProtoMessage *other)
       new (&update_peripheral_ownership) UpdatePeripheralOwnership{
           std::move(other->update_peripheral_ownership)};
       other->update_peripheral_ownership.~UpdatePeripheralOwnership();
+      break;
+    case MessageType::SEND_SOIL_MOISTURE_MEASUREMENT:
+      new (&send_soil_moisture_measurement) SendSoilMoistureMeasurement{
+          std::move(other->send_soil_moisture_measurement)};
+      other->send_soil_moisture_measurement.~SendSoilMoistureMeasurement();
       break;
     case MessageType::BASIC_RESPONSE:
       new (&basic_response) BasicResponse{std::move(other->basic_response)};
@@ -189,6 +171,9 @@ bool SendTlsProtobufMessage(
         case MessageType::UPDATE_PERIPHERAL_OWNERSHIP:
           msg = &organic_dump_msg->update_peripheral_ownership;
           break;
+        case MessageType::SEND_SOIL_MOISTURE_MEASUREMENT:
+          msg = &organic_dump_msg->send_soil_moisture_measurement;
+          break;
         case MessageType::BASIC_RESPONSE:
           msg = &organic_dump_msg->basic_response;
           break;
@@ -210,9 +195,7 @@ bool ReadTlsProtobufMessage(
 
     assert(cxn);
     assert(out_msg);
-
     uint8_t buffer[kRxBufferSize];
-
 
     // First read header
     network::ProtobufMessageHeader header;
@@ -295,6 +278,18 @@ bool ReadTlsProtobufMessage(
           *out_msg = OrganicDumpProtoMessage{std::move(update_ownership)};
           break;
         }
+        case MessageType::SEND_SOIL_MOISTURE_MEASUREMENT:
+        {
+          SendSoilMoistureMeasurement measurement;
+          is_successful = ReadTlsProtobufMessageBody(
+              cxn,
+              buffer,
+              header.size,
+              &measurement,
+              out_cxn_closed);
+          *out_msg = OrganicDumpProtoMessage{std::move(measurement)};
+          break;
+        }
         case MessageType::BASIC_RESPONSE:
         {
           BasicResponse response;
@@ -339,6 +334,8 @@ std::string ToString(MessageType type) {
           return "REGISTER_SOIL_MOISTURE_SENSOR";
       case MessageType::UPDATE_PERIPHERAL_OWNERSHIP:
           return "UPDATE_PERIPHERAL_OWNERSHIP";
+      case MessageType::SEND_SOIL_MOISTURE_MEASUREMENT:
+          return "SEND_SOIL_MOISTURE_MEASUREMENT";
       case MessageType::BASIC_RESPONSE:
           return "BASIC_RESPONSE";
       default:
