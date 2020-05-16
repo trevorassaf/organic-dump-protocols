@@ -142,8 +142,6 @@ void OrganicDumpProtoMessage::StealResources(OrganicDumpProtoMessage *other)
   // Restore |other| to default state
   other->type = MessageType::HELLO;
   new (&other->hello) Hello{};
-  
-  LOG(ERROR) << "bozkurtus -- OrganicDumpProtoMessage::StealResources() -- end";
 }
 
 bool SendTlsProtobufMessage(
@@ -191,8 +189,6 @@ bool ReadTlsProtobufMessage(
     OrganicDumpProtoMessage *out_msg,
     bool *out_cxn_closed)
 {
-    LOG(ERROR) << "bozkurtus -- ReadTlsProtobufMessage() -- call";
-
     assert(cxn);
     assert(out_msg);
     uint8_t buffer[kRxBufferSize];
@@ -210,13 +206,8 @@ bool ReadTlsProtobufMessage(
       return false;
     }
 
-    LOG(ERROR) << "bozkurtus -- ReadTlsProtobufMessage() -- after read header";
-
     MessageType type = static_cast<MessageType>(header.type);
     bool success = false;
-
-    LOG(ERROR) << "bozkurtus -- ReadTlsProtobufMessage() -- header type: "
-               << ToString(type);
 
     if (header.size > kRxBufferSize)
     {
@@ -224,8 +215,6 @@ bool ReadTlsProtobufMessage(
                    << kRxBufferSize << ". Actual size: " << header.size;
         return false;
     }
-
-    LOG(ERROR) << "bozkurtus -- ReadTlsProtobufMessage() -- before ReadTlsProtobufMessageBody";
 
     bool is_successful = true;
     switch (type)
@@ -308,7 +297,6 @@ bool ReadTlsProtobufMessage(
           return false;
     }
 
-    LOG(ERROR) << "bozkurtus -- ReadTlsProtobufMessage() -- end";
     return is_successful || out_cxn_closed;
 }
 
