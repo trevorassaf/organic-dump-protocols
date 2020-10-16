@@ -48,7 +48,7 @@ struct TableStruct_organic_5fdump_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[8]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[13]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -59,15 +59,27 @@ namespace organicdump_proto {
 class BasicResponse;
 class BasicResponseDefaultTypeInternal;
 extern BasicResponseDefaultTypeInternal _BasicResponse_default_instance_;
+class DailyIrrigationSchedule;
+class DailyIrrigationScheduleDefaultTypeInternal;
+extern DailyIrrigationScheduleDefaultTypeInternal _DailyIrrigationSchedule_default_instance_;
 class Echo;
 class EchoDefaultTypeInternal;
 extern EchoDefaultTypeInternal _Echo_default_instance_;
 class Hello;
 class HelloDefaultTypeInternal;
 extern HelloDefaultTypeInternal _Hello_default_instance_;
+class IrrigationRequest;
+class IrrigationRequestDefaultTypeInternal;
+extern IrrigationRequestDefaultTypeInternal _IrrigationRequest_default_instance_;
+class IrrigationResponse;
+class IrrigationResponseDefaultTypeInternal;
+extern IrrigationResponseDefaultTypeInternal _IrrigationResponse_default_instance_;
 class PeripheralMeta;
 class PeripheralMetaDefaultTypeInternal;
 extern PeripheralMetaDefaultTypeInternal _PeripheralMeta_default_instance_;
+class RegisterIrrigationSystem;
+class RegisterIrrigationSystemDefaultTypeInternal;
+extern RegisterIrrigationSystemDefaultTypeInternal _RegisterIrrigationSystem_default_instance_;
 class RegisterRpi;
 class RegisterRpiDefaultTypeInternal;
 extern RegisterRpiDefaultTypeInternal _RegisterRpi_default_instance_;
@@ -77,18 +89,26 @@ extern RegisterSoilMoistureSensorDefaultTypeInternal _RegisterSoilMoistureSensor
 class SendSoilMoistureMeasurement;
 class SendSoilMoistureMeasurementDefaultTypeInternal;
 extern SendSoilMoistureMeasurementDefaultTypeInternal _SendSoilMoistureMeasurement_default_instance_;
+class SetIrrigationSchedule;
+class SetIrrigationScheduleDefaultTypeInternal;
+extern SetIrrigationScheduleDefaultTypeInternal _SetIrrigationSchedule_default_instance_;
 class UpdatePeripheralOwnership;
 class UpdatePeripheralOwnershipDefaultTypeInternal;
 extern UpdatePeripheralOwnershipDefaultTypeInternal _UpdatePeripheralOwnership_default_instance_;
 }  // namespace organicdump_proto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::organicdump_proto::BasicResponse* Arena::CreateMaybeMessage<::organicdump_proto::BasicResponse>(Arena*);
+template<> ::organicdump_proto::DailyIrrigationSchedule* Arena::CreateMaybeMessage<::organicdump_proto::DailyIrrigationSchedule>(Arena*);
 template<> ::organicdump_proto::Echo* Arena::CreateMaybeMessage<::organicdump_proto::Echo>(Arena*);
 template<> ::organicdump_proto::Hello* Arena::CreateMaybeMessage<::organicdump_proto::Hello>(Arena*);
+template<> ::organicdump_proto::IrrigationRequest* Arena::CreateMaybeMessage<::organicdump_proto::IrrigationRequest>(Arena*);
+template<> ::organicdump_proto::IrrigationResponse* Arena::CreateMaybeMessage<::organicdump_proto::IrrigationResponse>(Arena*);
 template<> ::organicdump_proto::PeripheralMeta* Arena::CreateMaybeMessage<::organicdump_proto::PeripheralMeta>(Arena*);
+template<> ::organicdump_proto::RegisterIrrigationSystem* Arena::CreateMaybeMessage<::organicdump_proto::RegisterIrrigationSystem>(Arena*);
 template<> ::organicdump_proto::RegisterRpi* Arena::CreateMaybeMessage<::organicdump_proto::RegisterRpi>(Arena*);
 template<> ::organicdump_proto::RegisterSoilMoistureSensor* Arena::CreateMaybeMessage<::organicdump_proto::RegisterSoilMoistureSensor>(Arena*);
 template<> ::organicdump_proto::SendSoilMoistureMeasurement* Arena::CreateMaybeMessage<::organicdump_proto::SendSoilMoistureMeasurement>(Arena*);
+template<> ::organicdump_proto::SetIrrigationSchedule* Arena::CreateMaybeMessage<::organicdump_proto::SetIrrigationSchedule>(Arena*);
 template<> ::organicdump_proto::UpdatePeripheralOwnership* Arena::CreateMaybeMessage<::organicdump_proto::UpdatePeripheralOwnership>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace organicdump_proto {
@@ -100,12 +120,16 @@ enum MessageType : int {
   REGISTER_SOIL_MOISTURE_SENSOR = 3,
   UPDATE_PERIPHERAL_OWNERSHIP = 4,
   SEND_SOIL_MOISTURE_MEASUREMENT = 5,
+  REGISTER_IRRIGATION_SYSTEM = 6,
+  SET_IRRIGATION_SCHEDULE = 7,
+  IRRIGATION_RESPONSE = 8,
   CLIENT_ECHO = 128,
-  BASIC_RESPONSE = 129
+  BASIC_RESPONSE = 129,
+  IRRIGATION_REQUEST = 130
 };
 bool MessageType_IsValid(int value);
 constexpr MessageType MessageType_MIN = SERVER_ECHO;
-constexpr MessageType MessageType_MAX = BASIC_RESPONSE;
+constexpr MessageType MessageType_MAX = IRRIGATION_REQUEST;
 constexpr int MessageType_ARRAYSIZE = MessageType_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MessageType_descriptor();
@@ -151,11 +175,12 @@ enum PeripheralType : int {
   CAMERA_SENSOR = 1,
   LUX_SENSOR = 2,
   PIR_SENSOR = 3,
-  TEMPERATURE_SENSOR = 4
+  TEMPERATURE_SENSOR = 4,
+  IRRIGATION_SYSTEM = 5
 };
 bool PeripheralType_IsValid(int value);
 constexpr PeripheralType PeripheralType_MIN = SOIL_MOISTURE_SENSOR;
-constexpr PeripheralType PeripheralType_MAX = TEMPERATURE_SENSOR;
+constexpr PeripheralType PeripheralType_MAX = IRRIGATION_SYSTEM;
 constexpr int PeripheralType_ARRAYSIZE = PeripheralType_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PeripheralType_descriptor();
@@ -1541,6 +1566,826 @@ class SendSoilMoistureMeasurement :
   float value_;
   friend struct ::TableStruct_organic_5fdump_2eproto;
 };
+// -------------------------------------------------------------------
+
+class RegisterIrrigationSystem :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:organicdump_proto.RegisterIrrigationSystem) */ {
+ public:
+  RegisterIrrigationSystem();
+  virtual ~RegisterIrrigationSystem();
+
+  RegisterIrrigationSystem(const RegisterIrrigationSystem& from);
+  RegisterIrrigationSystem(RegisterIrrigationSystem&& from) noexcept
+    : RegisterIrrigationSystem() {
+    *this = ::std::move(from);
+  }
+
+  inline RegisterIrrigationSystem& operator=(const RegisterIrrigationSystem& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RegisterIrrigationSystem& operator=(RegisterIrrigationSystem&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const RegisterIrrigationSystem& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const RegisterIrrigationSystem* internal_default_instance() {
+    return reinterpret_cast<const RegisterIrrigationSystem*>(
+               &_RegisterIrrigationSystem_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(RegisterIrrigationSystem& a, RegisterIrrigationSystem& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RegisterIrrigationSystem* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RegisterIrrigationSystem* New() const final {
+    return CreateMaybeMessage<RegisterIrrigationSystem>(nullptr);
+  }
+
+  RegisterIrrigationSystem* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RegisterIrrigationSystem>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const RegisterIrrigationSystem& from);
+  void MergeFrom(const RegisterIrrigationSystem& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RegisterIrrigationSystem* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "organicdump_proto.RegisterIrrigationSystem";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_organic_5fdump_2eproto);
+    return ::descriptor_table_organic_5fdump_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMetaFieldNumber = 1,
+  };
+  // required .organicdump_proto.PeripheralMeta meta = 1;
+  bool has_meta() const;
+  private:
+  bool _internal_has_meta() const;
+  public:
+  void clear_meta();
+  const ::organicdump_proto::PeripheralMeta& meta() const;
+  ::organicdump_proto::PeripheralMeta* release_meta();
+  ::organicdump_proto::PeripheralMeta* mutable_meta();
+  void set_allocated_meta(::organicdump_proto::PeripheralMeta* meta);
+  private:
+  const ::organicdump_proto::PeripheralMeta& _internal_meta() const;
+  ::organicdump_proto::PeripheralMeta* _internal_mutable_meta();
+  public:
+
+  // @@protoc_insertion_point(class_scope:organicdump_proto.RegisterIrrigationSystem)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::organicdump_proto::PeripheralMeta* meta_;
+  friend struct ::TableStruct_organic_5fdump_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DailyIrrigationSchedule :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:organicdump_proto.DailyIrrigationSchedule) */ {
+ public:
+  DailyIrrigationSchedule();
+  virtual ~DailyIrrigationSchedule();
+
+  DailyIrrigationSchedule(const DailyIrrigationSchedule& from);
+  DailyIrrigationSchedule(DailyIrrigationSchedule&& from) noexcept
+    : DailyIrrigationSchedule() {
+    *this = ::std::move(from);
+  }
+
+  inline DailyIrrigationSchedule& operator=(const DailyIrrigationSchedule& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DailyIrrigationSchedule& operator=(DailyIrrigationSchedule&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const DailyIrrigationSchedule& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DailyIrrigationSchedule* internal_default_instance() {
+    return reinterpret_cast<const DailyIrrigationSchedule*>(
+               &_DailyIrrigationSchedule_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(DailyIrrigationSchedule& a, DailyIrrigationSchedule& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DailyIrrigationSchedule* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DailyIrrigationSchedule* New() const final {
+    return CreateMaybeMessage<DailyIrrigationSchedule>(nullptr);
+  }
+
+  DailyIrrigationSchedule* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DailyIrrigationSchedule>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const DailyIrrigationSchedule& from);
+  void MergeFrom(const DailyIrrigationSchedule& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DailyIrrigationSchedule* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "organicdump_proto.DailyIrrigationSchedule";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_organic_5fdump_2eproto);
+    return ::descriptor_table_organic_5fdump_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kWaterTimeMilitaryFieldNumber = 2,
+    kDayOfWeekIndexFieldNumber = 1,
+    kWaterDurationMsFieldNumber = 3,
+  };
+  // required string water_time_military = 2;
+  bool has_water_time_military() const;
+  private:
+  bool _internal_has_water_time_military() const;
+  public:
+  void clear_water_time_military();
+  const std::string& water_time_military() const;
+  void set_water_time_military(const std::string& value);
+  void set_water_time_military(std::string&& value);
+  void set_water_time_military(const char* value);
+  void set_water_time_military(const char* value, size_t size);
+  std::string* mutable_water_time_military();
+  std::string* release_water_time_military();
+  void set_allocated_water_time_military(std::string* water_time_military);
+  private:
+  const std::string& _internal_water_time_military() const;
+  void _internal_set_water_time_military(const std::string& value);
+  std::string* _internal_mutable_water_time_military();
+  public:
+
+  // required int32 day_of_week_index = 1;
+  bool has_day_of_week_index() const;
+  private:
+  bool _internal_has_day_of_week_index() const;
+  public:
+  void clear_day_of_week_index();
+  ::PROTOBUF_NAMESPACE_ID::int32 day_of_week_index() const;
+  void set_day_of_week_index(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_day_of_week_index() const;
+  void _internal_set_day_of_week_index(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // required int32 water_duration_ms = 3;
+  bool has_water_duration_ms() const;
+  private:
+  bool _internal_has_water_duration_ms() const;
+  public:
+  void clear_water_duration_ms();
+  ::PROTOBUF_NAMESPACE_ID::int32 water_duration_ms() const;
+  void set_water_duration_ms(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_water_duration_ms() const;
+  void _internal_set_water_duration_ms(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:organicdump_proto.DailyIrrigationSchedule)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr water_time_military_;
+  ::PROTOBUF_NAMESPACE_ID::int32 day_of_week_index_;
+  ::PROTOBUF_NAMESPACE_ID::int32 water_duration_ms_;
+  friend struct ::TableStruct_organic_5fdump_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetIrrigationSchedule :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:organicdump_proto.SetIrrigationSchedule) */ {
+ public:
+  SetIrrigationSchedule();
+  virtual ~SetIrrigationSchedule();
+
+  SetIrrigationSchedule(const SetIrrigationSchedule& from);
+  SetIrrigationSchedule(SetIrrigationSchedule&& from) noexcept
+    : SetIrrigationSchedule() {
+    *this = ::std::move(from);
+  }
+
+  inline SetIrrigationSchedule& operator=(const SetIrrigationSchedule& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetIrrigationSchedule& operator=(SetIrrigationSchedule&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const SetIrrigationSchedule& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SetIrrigationSchedule* internal_default_instance() {
+    return reinterpret_cast<const SetIrrigationSchedule*>(
+               &_SetIrrigationSchedule_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(SetIrrigationSchedule& a, SetIrrigationSchedule& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SetIrrigationSchedule* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SetIrrigationSchedule* New() const final {
+    return CreateMaybeMessage<SetIrrigationSchedule>(nullptr);
+  }
+
+  SetIrrigationSchedule* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<SetIrrigationSchedule>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const SetIrrigationSchedule& from);
+  void MergeFrom(const SetIrrigationSchedule& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SetIrrigationSchedule* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "organicdump_proto.SetIrrigationSchedule";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_organic_5fdump_2eproto);
+    return ::descriptor_table_organic_5fdump_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDailySchedulesFieldNumber = 2,
+    kIrrigationSystemIdFieldNumber = 1,
+  };
+  // repeated .organicdump_proto.DailyIrrigationSchedule daily_schedules = 2;
+  int daily_schedules_size() const;
+  private:
+  int _internal_daily_schedules_size() const;
+  public:
+  void clear_daily_schedules();
+  ::organicdump_proto::DailyIrrigationSchedule* mutable_daily_schedules(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::organicdump_proto::DailyIrrigationSchedule >*
+      mutable_daily_schedules();
+  private:
+  const ::organicdump_proto::DailyIrrigationSchedule& _internal_daily_schedules(int index) const;
+  ::organicdump_proto::DailyIrrigationSchedule* _internal_add_daily_schedules();
+  public:
+  const ::organicdump_proto::DailyIrrigationSchedule& daily_schedules(int index) const;
+  ::organicdump_proto::DailyIrrigationSchedule* add_daily_schedules();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::organicdump_proto::DailyIrrigationSchedule >&
+      daily_schedules() const;
+
+  // required int32 irrigation_system_id = 1;
+  bool has_irrigation_system_id() const;
+  private:
+  bool _internal_has_irrigation_system_id() const;
+  public:
+  void clear_irrigation_system_id();
+  ::PROTOBUF_NAMESPACE_ID::int32 irrigation_system_id() const;
+  void set_irrigation_system_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_irrigation_system_id() const;
+  void _internal_set_irrigation_system_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:organicdump_proto.SetIrrigationSchedule)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::organicdump_proto::DailyIrrigationSchedule > daily_schedules_;
+  ::PROTOBUF_NAMESPACE_ID::int32 irrigation_system_id_;
+  friend struct ::TableStruct_organic_5fdump_2eproto;
+};
+// -------------------------------------------------------------------
+
+class IrrigationRequest :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:organicdump_proto.IrrigationRequest) */ {
+ public:
+  IrrigationRequest();
+  virtual ~IrrigationRequest();
+
+  IrrigationRequest(const IrrigationRequest& from);
+  IrrigationRequest(IrrigationRequest&& from) noexcept
+    : IrrigationRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline IrrigationRequest& operator=(const IrrigationRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline IrrigationRequest& operator=(IrrigationRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const IrrigationRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const IrrigationRequest* internal_default_instance() {
+    return reinterpret_cast<const IrrigationRequest*>(
+               &_IrrigationRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(IrrigationRequest& a, IrrigationRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(IrrigationRequest* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline IrrigationRequest* New() const final {
+    return CreateMaybeMessage<IrrigationRequest>(nullptr);
+  }
+
+  IrrigationRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<IrrigationRequest>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const IrrigationRequest& from);
+  void MergeFrom(const IrrigationRequest& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(IrrigationRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "organicdump_proto.IrrigationRequest";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_organic_5fdump_2eproto);
+    return ::descriptor_table_organic_5fdump_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIrrigationSystemIdFieldNumber = 1,
+    kDurationMsFieldNumber = 2,
+  };
+  // required int32 irrigation_system_id = 1;
+  bool has_irrigation_system_id() const;
+  private:
+  bool _internal_has_irrigation_system_id() const;
+  public:
+  void clear_irrigation_system_id();
+  ::PROTOBUF_NAMESPACE_ID::int32 irrigation_system_id() const;
+  void set_irrigation_system_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_irrigation_system_id() const;
+  void _internal_set_irrigation_system_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // required int32 duration_ms = 2;
+  bool has_duration_ms() const;
+  private:
+  bool _internal_has_duration_ms() const;
+  public:
+  void clear_duration_ms();
+  ::PROTOBUF_NAMESPACE_ID::int32 duration_ms() const;
+  void set_duration_ms(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_duration_ms() const;
+  void _internal_set_duration_ms(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:organicdump_proto.IrrigationRequest)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::int32 irrigation_system_id_;
+  ::PROTOBUF_NAMESPACE_ID::int32 duration_ms_;
+  friend struct ::TableStruct_organic_5fdump_2eproto;
+};
+// -------------------------------------------------------------------
+
+class IrrigationResponse :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:organicdump_proto.IrrigationResponse) */ {
+ public:
+  IrrigationResponse();
+  virtual ~IrrigationResponse();
+
+  IrrigationResponse(const IrrigationResponse& from);
+  IrrigationResponse(IrrigationResponse&& from) noexcept
+    : IrrigationResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline IrrigationResponse& operator=(const IrrigationResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline IrrigationResponse& operator=(IrrigationResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const IrrigationResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const IrrigationResponse* internal_default_instance() {
+    return reinterpret_cast<const IrrigationResponse*>(
+               &_IrrigationResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(IrrigationResponse& a, IrrigationResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(IrrigationResponse* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline IrrigationResponse* New() const final {
+    return CreateMaybeMessage<IrrigationResponse>(nullptr);
+  }
+
+  IrrigationResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<IrrigationResponse>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const IrrigationResponse& from);
+  void MergeFrom(const IrrigationResponse& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(IrrigationResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "organicdump_proto.IrrigationResponse";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_organic_5fdump_2eproto);
+    return ::descriptor_table_organic_5fdump_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMsgFieldNumber = 3,
+    kIrrigationSystemIdFieldNumber = 1,
+    kIsSuccessfulFieldNumber = 2,
+  };
+  // required string msg = 3;
+  bool has_msg() const;
+  private:
+  bool _internal_has_msg() const;
+  public:
+  void clear_msg();
+  const std::string& msg() const;
+  void set_msg(const std::string& value);
+  void set_msg(std::string&& value);
+  void set_msg(const char* value);
+  void set_msg(const char* value, size_t size);
+  std::string* mutable_msg();
+  std::string* release_msg();
+  void set_allocated_msg(std::string* msg);
+  private:
+  const std::string& _internal_msg() const;
+  void _internal_set_msg(const std::string& value);
+  std::string* _internal_mutable_msg();
+  public:
+
+  // required int32 irrigation_system_id = 1;
+  bool has_irrigation_system_id() const;
+  private:
+  bool _internal_has_irrigation_system_id() const;
+  public:
+  void clear_irrigation_system_id();
+  ::PROTOBUF_NAMESPACE_ID::int32 irrigation_system_id() const;
+  void set_irrigation_system_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_irrigation_system_id() const;
+  void _internal_set_irrigation_system_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // required bool is_successful = 2;
+  bool has_is_successful() const;
+  private:
+  bool _internal_has_is_successful() const;
+  public:
+  void clear_is_successful();
+  bool is_successful() const;
+  void set_is_successful(bool value);
+  private:
+  bool _internal_is_successful() const;
+  void _internal_set_is_successful(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:organicdump_proto.IrrigationResponse)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr msg_;
+  ::PROTOBUF_NAMESPACE_ID::int32 irrigation_system_id_;
+  bool is_successful_;
+  friend struct ::TableStruct_organic_5fdump_2eproto;
+};
 // ===================================================================
 
 
@@ -2404,9 +3249,476 @@ inline void SendSoilMoistureMeasurement::set_value(float value) {
   // @@protoc_insertion_point(field_set:organicdump_proto.SendSoilMoistureMeasurement.value)
 }
 
+// -------------------------------------------------------------------
+
+// RegisterIrrigationSystem
+
+// required .organicdump_proto.PeripheralMeta meta = 1;
+inline bool RegisterIrrigationSystem::_internal_has_meta() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || meta_ != nullptr);
+  return value;
+}
+inline bool RegisterIrrigationSystem::has_meta() const {
+  return _internal_has_meta();
+}
+inline void RegisterIrrigationSystem::clear_meta() {
+  if (meta_ != nullptr) meta_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::organicdump_proto::PeripheralMeta& RegisterIrrigationSystem::_internal_meta() const {
+  const ::organicdump_proto::PeripheralMeta* p = meta_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::organicdump_proto::PeripheralMeta*>(
+      &::organicdump_proto::_PeripheralMeta_default_instance_);
+}
+inline const ::organicdump_proto::PeripheralMeta& RegisterIrrigationSystem::meta() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.RegisterIrrigationSystem.meta)
+  return _internal_meta();
+}
+inline ::organicdump_proto::PeripheralMeta* RegisterIrrigationSystem::release_meta() {
+  // @@protoc_insertion_point(field_release:organicdump_proto.RegisterIrrigationSystem.meta)
+  _has_bits_[0] &= ~0x00000001u;
+  ::organicdump_proto::PeripheralMeta* temp = meta_;
+  meta_ = nullptr;
+  return temp;
+}
+inline ::organicdump_proto::PeripheralMeta* RegisterIrrigationSystem::_internal_mutable_meta() {
+  _has_bits_[0] |= 0x00000001u;
+  if (meta_ == nullptr) {
+    auto* p = CreateMaybeMessage<::organicdump_proto::PeripheralMeta>(GetArenaNoVirtual());
+    meta_ = p;
+  }
+  return meta_;
+}
+inline ::organicdump_proto::PeripheralMeta* RegisterIrrigationSystem::mutable_meta() {
+  // @@protoc_insertion_point(field_mutable:organicdump_proto.RegisterIrrigationSystem.meta)
+  return _internal_mutable_meta();
+}
+inline void RegisterIrrigationSystem::set_allocated_meta(::organicdump_proto::PeripheralMeta* meta) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete meta_;
+  }
+  if (meta) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      meta = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, meta, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  meta_ = meta;
+  // @@protoc_insertion_point(field_set_allocated:organicdump_proto.RegisterIrrigationSystem.meta)
+}
+
+// -------------------------------------------------------------------
+
+// DailyIrrigationSchedule
+
+// required int32 day_of_week_index = 1;
+inline bool DailyIrrigationSchedule::_internal_has_day_of_week_index() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool DailyIrrigationSchedule::has_day_of_week_index() const {
+  return _internal_has_day_of_week_index();
+}
+inline void DailyIrrigationSchedule::clear_day_of_week_index() {
+  day_of_week_index_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 DailyIrrigationSchedule::_internal_day_of_week_index() const {
+  return day_of_week_index_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 DailyIrrigationSchedule::day_of_week_index() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.DailyIrrigationSchedule.day_of_week_index)
+  return _internal_day_of_week_index();
+}
+inline void DailyIrrigationSchedule::_internal_set_day_of_week_index(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000002u;
+  day_of_week_index_ = value;
+}
+inline void DailyIrrigationSchedule::set_day_of_week_index(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_day_of_week_index(value);
+  // @@protoc_insertion_point(field_set:organicdump_proto.DailyIrrigationSchedule.day_of_week_index)
+}
+
+// required string water_time_military = 2;
+inline bool DailyIrrigationSchedule::_internal_has_water_time_military() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool DailyIrrigationSchedule::has_water_time_military() const {
+  return _internal_has_water_time_military();
+}
+inline void DailyIrrigationSchedule::clear_water_time_military() {
+  water_time_military_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& DailyIrrigationSchedule::water_time_military() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.DailyIrrigationSchedule.water_time_military)
+  return _internal_water_time_military();
+}
+inline void DailyIrrigationSchedule::set_water_time_military(const std::string& value) {
+  _internal_set_water_time_military(value);
+  // @@protoc_insertion_point(field_set:organicdump_proto.DailyIrrigationSchedule.water_time_military)
+}
+inline std::string* DailyIrrigationSchedule::mutable_water_time_military() {
+  // @@protoc_insertion_point(field_mutable:organicdump_proto.DailyIrrigationSchedule.water_time_military)
+  return _internal_mutable_water_time_military();
+}
+inline const std::string& DailyIrrigationSchedule::_internal_water_time_military() const {
+  return water_time_military_.GetNoArena();
+}
+inline void DailyIrrigationSchedule::_internal_set_water_time_military(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  water_time_military_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void DailyIrrigationSchedule::set_water_time_military(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  water_time_military_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:organicdump_proto.DailyIrrigationSchedule.water_time_military)
+}
+inline void DailyIrrigationSchedule::set_water_time_military(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  water_time_military_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:organicdump_proto.DailyIrrigationSchedule.water_time_military)
+}
+inline void DailyIrrigationSchedule::set_water_time_military(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  water_time_military_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:organicdump_proto.DailyIrrigationSchedule.water_time_military)
+}
+inline std::string* DailyIrrigationSchedule::_internal_mutable_water_time_military() {
+  _has_bits_[0] |= 0x00000001u;
+  return water_time_military_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* DailyIrrigationSchedule::release_water_time_military() {
+  // @@protoc_insertion_point(field_release:organicdump_proto.DailyIrrigationSchedule.water_time_military)
+  if (!has_water_time_military()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return water_time_military_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void DailyIrrigationSchedule::set_allocated_water_time_military(std::string* water_time_military) {
+  if (water_time_military != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  water_time_military_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), water_time_military);
+  // @@protoc_insertion_point(field_set_allocated:organicdump_proto.DailyIrrigationSchedule.water_time_military)
+}
+
+// required int32 water_duration_ms = 3;
+inline bool DailyIrrigationSchedule::_internal_has_water_duration_ms() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool DailyIrrigationSchedule::has_water_duration_ms() const {
+  return _internal_has_water_duration_ms();
+}
+inline void DailyIrrigationSchedule::clear_water_duration_ms() {
+  water_duration_ms_ = 0;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 DailyIrrigationSchedule::_internal_water_duration_ms() const {
+  return water_duration_ms_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 DailyIrrigationSchedule::water_duration_ms() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.DailyIrrigationSchedule.water_duration_ms)
+  return _internal_water_duration_ms();
+}
+inline void DailyIrrigationSchedule::_internal_set_water_duration_ms(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000004u;
+  water_duration_ms_ = value;
+}
+inline void DailyIrrigationSchedule::set_water_duration_ms(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_water_duration_ms(value);
+  // @@protoc_insertion_point(field_set:organicdump_proto.DailyIrrigationSchedule.water_duration_ms)
+}
+
+// -------------------------------------------------------------------
+
+// SetIrrigationSchedule
+
+// required int32 irrigation_system_id = 1;
+inline bool SetIrrigationSchedule::_internal_has_irrigation_system_id() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool SetIrrigationSchedule::has_irrigation_system_id() const {
+  return _internal_has_irrigation_system_id();
+}
+inline void SetIrrigationSchedule::clear_irrigation_system_id() {
+  irrigation_system_id_ = 0;
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SetIrrigationSchedule::_internal_irrigation_system_id() const {
+  return irrigation_system_id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SetIrrigationSchedule::irrigation_system_id() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.SetIrrigationSchedule.irrigation_system_id)
+  return _internal_irrigation_system_id();
+}
+inline void SetIrrigationSchedule::_internal_set_irrigation_system_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000001u;
+  irrigation_system_id_ = value;
+}
+inline void SetIrrigationSchedule::set_irrigation_system_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_irrigation_system_id(value);
+  // @@protoc_insertion_point(field_set:organicdump_proto.SetIrrigationSchedule.irrigation_system_id)
+}
+
+// repeated .organicdump_proto.DailyIrrigationSchedule daily_schedules = 2;
+inline int SetIrrigationSchedule::_internal_daily_schedules_size() const {
+  return daily_schedules_.size();
+}
+inline int SetIrrigationSchedule::daily_schedules_size() const {
+  return _internal_daily_schedules_size();
+}
+inline void SetIrrigationSchedule::clear_daily_schedules() {
+  daily_schedules_.Clear();
+}
+inline ::organicdump_proto::DailyIrrigationSchedule* SetIrrigationSchedule::mutable_daily_schedules(int index) {
+  // @@protoc_insertion_point(field_mutable:organicdump_proto.SetIrrigationSchedule.daily_schedules)
+  return daily_schedules_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::organicdump_proto::DailyIrrigationSchedule >*
+SetIrrigationSchedule::mutable_daily_schedules() {
+  // @@protoc_insertion_point(field_mutable_list:organicdump_proto.SetIrrigationSchedule.daily_schedules)
+  return &daily_schedules_;
+}
+inline const ::organicdump_proto::DailyIrrigationSchedule& SetIrrigationSchedule::_internal_daily_schedules(int index) const {
+  return daily_schedules_.Get(index);
+}
+inline const ::organicdump_proto::DailyIrrigationSchedule& SetIrrigationSchedule::daily_schedules(int index) const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.SetIrrigationSchedule.daily_schedules)
+  return _internal_daily_schedules(index);
+}
+inline ::organicdump_proto::DailyIrrigationSchedule* SetIrrigationSchedule::_internal_add_daily_schedules() {
+  return daily_schedules_.Add();
+}
+inline ::organicdump_proto::DailyIrrigationSchedule* SetIrrigationSchedule::add_daily_schedules() {
+  // @@protoc_insertion_point(field_add:organicdump_proto.SetIrrigationSchedule.daily_schedules)
+  return _internal_add_daily_schedules();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::organicdump_proto::DailyIrrigationSchedule >&
+SetIrrigationSchedule::daily_schedules() const {
+  // @@protoc_insertion_point(field_list:organicdump_proto.SetIrrigationSchedule.daily_schedules)
+  return daily_schedules_;
+}
+
+// -------------------------------------------------------------------
+
+// IrrigationRequest
+
+// required int32 irrigation_system_id = 1;
+inline bool IrrigationRequest::_internal_has_irrigation_system_id() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool IrrigationRequest::has_irrigation_system_id() const {
+  return _internal_has_irrigation_system_id();
+}
+inline void IrrigationRequest::clear_irrigation_system_id() {
+  irrigation_system_id_ = 0;
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 IrrigationRequest::_internal_irrigation_system_id() const {
+  return irrigation_system_id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 IrrigationRequest::irrigation_system_id() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.IrrigationRequest.irrigation_system_id)
+  return _internal_irrigation_system_id();
+}
+inline void IrrigationRequest::_internal_set_irrigation_system_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000001u;
+  irrigation_system_id_ = value;
+}
+inline void IrrigationRequest::set_irrigation_system_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_irrigation_system_id(value);
+  // @@protoc_insertion_point(field_set:organicdump_proto.IrrigationRequest.irrigation_system_id)
+}
+
+// required int32 duration_ms = 2;
+inline bool IrrigationRequest::_internal_has_duration_ms() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool IrrigationRequest::has_duration_ms() const {
+  return _internal_has_duration_ms();
+}
+inline void IrrigationRequest::clear_duration_ms() {
+  duration_ms_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 IrrigationRequest::_internal_duration_ms() const {
+  return duration_ms_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 IrrigationRequest::duration_ms() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.IrrigationRequest.duration_ms)
+  return _internal_duration_ms();
+}
+inline void IrrigationRequest::_internal_set_duration_ms(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000002u;
+  duration_ms_ = value;
+}
+inline void IrrigationRequest::set_duration_ms(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_duration_ms(value);
+  // @@protoc_insertion_point(field_set:organicdump_proto.IrrigationRequest.duration_ms)
+}
+
+// -------------------------------------------------------------------
+
+// IrrigationResponse
+
+// required int32 irrigation_system_id = 1;
+inline bool IrrigationResponse::_internal_has_irrigation_system_id() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool IrrigationResponse::has_irrigation_system_id() const {
+  return _internal_has_irrigation_system_id();
+}
+inline void IrrigationResponse::clear_irrigation_system_id() {
+  irrigation_system_id_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 IrrigationResponse::_internal_irrigation_system_id() const {
+  return irrigation_system_id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 IrrigationResponse::irrigation_system_id() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.IrrigationResponse.irrigation_system_id)
+  return _internal_irrigation_system_id();
+}
+inline void IrrigationResponse::_internal_set_irrigation_system_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000002u;
+  irrigation_system_id_ = value;
+}
+inline void IrrigationResponse::set_irrigation_system_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_irrigation_system_id(value);
+  // @@protoc_insertion_point(field_set:organicdump_proto.IrrigationResponse.irrigation_system_id)
+}
+
+// required bool is_successful = 2;
+inline bool IrrigationResponse::_internal_has_is_successful() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool IrrigationResponse::has_is_successful() const {
+  return _internal_has_is_successful();
+}
+inline void IrrigationResponse::clear_is_successful() {
+  is_successful_ = false;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline bool IrrigationResponse::_internal_is_successful() const {
+  return is_successful_;
+}
+inline bool IrrigationResponse::is_successful() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.IrrigationResponse.is_successful)
+  return _internal_is_successful();
+}
+inline void IrrigationResponse::_internal_set_is_successful(bool value) {
+  _has_bits_[0] |= 0x00000004u;
+  is_successful_ = value;
+}
+inline void IrrigationResponse::set_is_successful(bool value) {
+  _internal_set_is_successful(value);
+  // @@protoc_insertion_point(field_set:organicdump_proto.IrrigationResponse.is_successful)
+}
+
+// required string msg = 3;
+inline bool IrrigationResponse::_internal_has_msg() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool IrrigationResponse::has_msg() const {
+  return _internal_has_msg();
+}
+inline void IrrigationResponse::clear_msg() {
+  msg_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& IrrigationResponse::msg() const {
+  // @@protoc_insertion_point(field_get:organicdump_proto.IrrigationResponse.msg)
+  return _internal_msg();
+}
+inline void IrrigationResponse::set_msg(const std::string& value) {
+  _internal_set_msg(value);
+  // @@protoc_insertion_point(field_set:organicdump_proto.IrrigationResponse.msg)
+}
+inline std::string* IrrigationResponse::mutable_msg() {
+  // @@protoc_insertion_point(field_mutable:organicdump_proto.IrrigationResponse.msg)
+  return _internal_mutable_msg();
+}
+inline const std::string& IrrigationResponse::_internal_msg() const {
+  return msg_.GetNoArena();
+}
+inline void IrrigationResponse::_internal_set_msg(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  msg_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void IrrigationResponse::set_msg(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  msg_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:organicdump_proto.IrrigationResponse.msg)
+}
+inline void IrrigationResponse::set_msg(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  msg_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:organicdump_proto.IrrigationResponse.msg)
+}
+inline void IrrigationResponse::set_msg(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  msg_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:organicdump_proto.IrrigationResponse.msg)
+}
+inline std::string* IrrigationResponse::_internal_mutable_msg() {
+  _has_bits_[0] |= 0x00000001u;
+  return msg_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* IrrigationResponse::release_msg() {
+  // @@protoc_insertion_point(field_release:organicdump_proto.IrrigationResponse.msg)
+  if (!has_msg()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return msg_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void IrrigationResponse::set_allocated_msg(std::string* msg) {
+  if (msg != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  msg_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), msg);
+  // @@protoc_insertion_point(field_set_allocated:organicdump_proto.IrrigationResponse.msg)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
