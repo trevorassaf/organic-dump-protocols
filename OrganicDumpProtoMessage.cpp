@@ -16,6 +16,12 @@ using organicdump_proto::RegisterRpi;
 using organicdump_proto::RegisterSoilMoistureSensor;
 using organicdump_proto::SendSoilMoistureMeasurement;
 using organicdump_proto::UpdatePeripheralOwnership;
+using organicdump_proto::RegisterIrrigationSystem;
+using organicdump_proto::DailyIrrigationSchedule;
+using organicdump_proto::SetIrrigationSchedule;
+using organicdump_proto::IrrigationResponse;
+using organicdump_proto::UnscheduledIrrigationRequest;
+using organicdump_proto::IrrigationRequest;
 
 using network::TlsConnection;
 
@@ -48,9 +54,29 @@ OrganicDumpProtoMessage::OrganicDumpProtoMessage(SendSoilMoistureMeasurement msg
   : type{MessageType::SEND_SOIL_MOISTURE_MEASUREMENT},
     send_soil_moisture_measurement{std::move(msg)} {}
 
+OrganicDumpProtoMessage::OrganicDumpProtoMessage(RegisterIrrigationSystem msg)
+  : type{MessageType::REGISTER_IRRIGATION_SYSTEM},
+    register_irrigation_system{std::move(msg)} {}
+
+OrganicDumpProtoMessage::OrganicDumpProtoMessage(SetIrrigationSchedule msg)
+  : type{MessageType::SET_IRRIGATION_SCHEDULE},
+    set_irrigation_schedule{std::move(msg)} {}
+
+OrganicDumpProtoMessage::OrganicDumpProtoMessage(IrrigationResponse msg)
+  : type{MessageType::IRRIGATION_RESPONSE},
+    irrigation_response{std::move(msg)} {}
+
+OrganicDumpProtoMessage::OrganicDumpProtoMessage(UnscheduledIrrigationRequest msg)
+  : type{MessageType::UNSCHEDULED_IRRIGATION_REQUEST},
+    unscheduled_irrigation_request{std::move(msg)} {}
+
 OrganicDumpProtoMessage::OrganicDumpProtoMessage(BasicResponse msg)
   : type{MessageType::BASIC_RESPONSE},
     basic_response{std::move(msg)} {}
+
+OrganicDumpProtoMessage::OrganicDumpProtoMessage(IrrigationRequest msg)
+  : type{MessageType::IRRIGATION_REQUEST},
+    irrigation_request{std::move(msg)} {}
 
 OrganicDumpProtoMessage::OrganicDumpProtoMessage(OrganicDumpProtoMessage &&other) {
   StealResources(&other);
@@ -88,8 +114,23 @@ void OrganicDumpProtoMessage::CloseResources()
     case MessageType::SEND_SOIL_MOISTURE_MEASUREMENT:
       send_soil_moisture_measurement.~SendSoilMoistureMeasurement();
       break;
+    case MessageType::REGISTER_IRRIGATION_SYSTEM:
+      register_irrigation_system.~RegisterIrrigationSystem();
+      break;
+    case MessageType::SET_IRRIGATION_SCHEDULE:
+      set_irrigation_schedule.~SetIrrigationSchedule();
+      break;
+    case MessageType::IRRIGATION_RESPONSE:
+      irrigation_response.~IrrigationResponse();
+      break;
+    case MessageType::UNSCHEDULED_IRRIGATION_REQUEST:
+      unscheduled_irrigation_request.~UnscheduledIrrigationRequest();
+      break;
     case MessageType::BASIC_RESPONSE:
       basic_response.~BasicResponse();
+      break;
+    case MessageType::IRRIGATION_REQUEST:
+      irrigation_request.~IrrigationRequest();
       break;
     default:
       LOG(ERROR) << "Unknown MessageType: " << static_cast<int>(type);
@@ -129,9 +170,29 @@ void OrganicDumpProtoMessage::StealResources(OrganicDumpProtoMessage *other)
           std::move(other->send_soil_moisture_measurement)};
       other->send_soil_moisture_measurement.~SendSoilMoistureMeasurement();
       break;
+    case MessageType::REGISTER_IRRIGATION_SYSTEM:
+      new (&register_irrigation_system) RegisterIrrigationSystem{std::move(other->register_irrigation_system)};
+      other->register_irrigation_system.~RegisterIrrigationSystem();
+      break;
+    case MessageType::SET_IRRIGATION_SCHEDULE:
+      new (&set_irrigation_schedule) SetIrrigationSchedule{std::move(other->set_irrigation_schedule)};
+      other->set_irrigation_schedule.~SetIrrigationSchedule();
+      break;
+    case MessageType::IRRIGATION_RESPONSE:
+      new (&irrigation_response) IrrigationResponse{std::move(other->irrigation_response)};
+      other->irrigation_response.~IrrigationResponse();
+      break;
+    case MessageType::UNSCHEDULED_IRRIGATION_REQUEST:
+      new (&unscheduled_irrigation_request) UnscheduledIrrigationRequest{std::move(other->unscheduled_irrigation_request)};
+      other->unscheduled_irrigation_request.~UnscheduledIrrigationRequest();
+      break;
     case MessageType::BASIC_RESPONSE:
       new (&basic_response) BasicResponse{std::move(other->basic_response)};
       other->basic_response.~BasicResponse();
+      break;
+    case MessageType::IRRIGATION_REQUEST:
+      new (&irrigation_request) IrrigationRequest{std::move(other->irrigation_request)};
+      other->irrigation_request.~IrrigationRequest();
       break;
     default:
       LOG(ERROR) << "Unknown MessageType: " << static_cast<int>(type);
@@ -172,8 +233,23 @@ bool SendTlsProtobufMessage(
         case MessageType::SEND_SOIL_MOISTURE_MEASUREMENT:
           msg = &organic_dump_msg->send_soil_moisture_measurement;
           break;
+        case MessageType::REGISTER_IRRIGATION_SYSTEM:
+          msg = &organic_dump_msg->register_irrigation_system;
+          break;
+        case MessageType::SET_IRRIGATION_SCHEDULE:
+          msg = &organic_dump_msg->set_irrigation_schedule;
+          break;
+        case MessageType::IRRIGATION_RESPONSE:
+          msg = &organic_dump_msg->irrigation_response;
+          break;
+        case MessageType::UNSCHEDULED_IRRIGATION_REQUEST:
+          msg = &organic_dump_msg->unscheduled_irrigation_request;
+          break;
         case MessageType::BASIC_RESPONSE:
           msg = &organic_dump_msg->basic_response;
+          break;
+        case MessageType::IRRIGATION_REQUEST:
+          msg = &organic_dump_msg->irrigation_request;
           break;
         default:
           LOG(ERROR) << "Unknown message type: " << static_cast<int>(organic_dump_msg->type);
@@ -279,6 +355,54 @@ bool ReadTlsProtobufMessage(
           *out_msg = OrganicDumpProtoMessage{std::move(measurement)};
           break;
         }
+        case MessageType::REGISTER_IRRIGATION_SYSTEM:
+        {
+          RegisterIrrigationSystem register_system;
+          is_successful = ReadTlsProtobufMessageBody(
+              cxn,
+              buffer,
+              header.size,
+              &register_system,
+              out_cxn_closed);
+          *out_msg = OrganicDumpProtoMessage{std::move(register_system)};
+          break;
+        }
+        case MessageType::SET_IRRIGATION_SCHEDULE:
+        {
+          SetIrrigationSchedule schedule;
+          is_successful = ReadTlsProtobufMessageBody(
+              cxn,
+              buffer,
+              header.size,
+              &schedule,
+              out_cxn_closed);
+          *out_msg = OrganicDumpProtoMessage{std::move(schedule)};
+          break;
+        }
+        case MessageType::IRRIGATION_RESPONSE:
+        {
+          IrrigationResponse response;
+          is_successful = ReadTlsProtobufMessageBody(
+              cxn,
+              buffer,
+              header.size,
+              &response,
+              out_cxn_closed);
+          *out_msg = OrganicDumpProtoMessage{std::move(response)};
+          break;
+        }
+        case MessageType::UNSCHEDULED_IRRIGATION_REQUEST:
+        {
+          UnscheduledIrrigationRequest msg;
+          is_successful = ReadTlsProtobufMessageBody(
+              cxn,
+              buffer,
+              header.size,
+              &msg,
+              out_cxn_closed);
+          *out_msg = OrganicDumpProtoMessage{std::move(msg)};
+          break;
+        }
         case MessageType::BASIC_RESPONSE:
         {
           BasicResponse response;
@@ -289,6 +413,18 @@ bool ReadTlsProtobufMessage(
               &response,
               out_cxn_closed);
           *out_msg = OrganicDumpProtoMessage{std::move(response)};
+          break;
+        }
+        case MessageType::IRRIGATION_REQUEST:
+        {
+          IrrigationRequest msg;
+          is_successful = ReadTlsProtobufMessageBody(
+              cxn,
+              buffer,
+              header.size,
+              &msg,
+              out_cxn_closed);
+          *out_msg = OrganicDumpProtoMessage{std::move(msg)};
           break;
         }
         default:
@@ -324,8 +460,18 @@ std::string ToString(MessageType type) {
           return "UPDATE_PERIPHERAL_OWNERSHIP";
       case MessageType::SEND_SOIL_MOISTURE_MEASUREMENT:
           return "SEND_SOIL_MOISTURE_MEASUREMENT";
+      case MessageType::REGISTER_IRRIGATION_SYSTEM:
+          return "REGISTER_IRRIGATION_SYSTEM";
+      case MessageType::SET_IRRIGATION_SCHEDULE:
+          return "SET_IRRIGATION_SCHEDULE";
+      case MessageType::IRRIGATION_RESPONSE:
+          return "IRRIGATION_RESPONSE";
+      case MessageType::UNSCHEDULED_IRRIGATION_REQUEST:
+          return "UNSCHEDULED_IRRIGATION_REQUEST";
       case MessageType::BASIC_RESPONSE:
           return "BASIC_RESPONSE";
+      case MessageType::IRRIGATION_REQUEST:
+          return "IRRIGATION_REQUEST";
       default:
           return "UNKNOWN";
   }
